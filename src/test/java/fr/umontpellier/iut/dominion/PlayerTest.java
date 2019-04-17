@@ -36,13 +36,11 @@ class PlayerTest {
 
     }
 
-    @Disabled
     @Test
     void testPlayerConstructorHand() {
         assertEquals(5, p.getHand().size());
     }
 
-    @Disabled
     @Test
     void testPlayerConstructorDraw() {
         assertEquals(5, p.getDraw().size());

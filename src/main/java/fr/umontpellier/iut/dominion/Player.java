@@ -69,7 +69,10 @@ public class Player {
      * préparer la main du joueur après avoir placé les cartes dans la défausse.
      */
     public Player(String name, Game game) {
+        hand = new ListOfCards();
         discard = new ListOfCards();
+        inPlay = new ListOfCards();
+        draw = new ListOfCards();
         for (int i = 0; i < 7; i++) {
             discard.add(new Copper());
         }
@@ -516,7 +519,23 @@ public class Player {
      * - Le joueur pioche 5 cartes en main
      */
     public void endTurn() {
-        throw new RuntimeException("Not Implemented");
+        numberOfActions = 0;
+        money = 0;
+        numberOfBuys = 0;
+        discard.addAll(hand);
+        discard.addAll(inPlay);
+        hand = new ListOfCards();
+        inPlay = new ListOfCards();
+        int count = 0;
+        while ((count < 5) || (discard.isEmpty() && draw.isEmpty())){
+            if (draw.isEmpty()){
+                discard.shuffle();
+                draw = discard;
+                discard = new ListOfCards();
+            }
+            hand.add(draw.remove(0));
+            count++;
+        }
     }
 
     /**
