@@ -46,7 +46,6 @@ class PlayerTest {
         assertEquals(5, p.getDraw().size());
     }
 
-    @Disabled
     @Test
     void testIncrementActions() {
         p.incrementActions(2);
@@ -55,7 +54,6 @@ class PlayerTest {
         assertEquals(1, p.getNumberOfActions());
     }
 
-    @Disabled
     @Test
     void testIncrementMoney() {
         p.incrementMoney(2);
@@ -64,7 +62,6 @@ class PlayerTest {
         assertEquals(1, p.getMoney());
     }
 
-    @Disabled
     @Test
     void testIncrementBuys() {
         p.incrementBuys(2);
