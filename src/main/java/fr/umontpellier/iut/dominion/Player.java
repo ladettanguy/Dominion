@@ -1,6 +1,8 @@
 package fr.umontpellier.iut.dominion;
 
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.common.Copper;
+import fr.umontpellier.iut.dominion.cards.common.Estate;
 
 import java.util.*;
 
@@ -67,7 +69,16 @@ public class Player {
      * préparer la main du joueur après avoir placé les cartes dans la défausse.
      */
     public Player(String name, Game game) {
-        throw new RuntimeException("Not Implemented");
+        discard = new ListOfCards();
+        for (int i = 0; i < 7; i++) {
+            discard.add(new Copper());
+        }
+        for (int i = 0; i < 3; i++) {
+            discard.add(new Estate());
+        }
+        this.name = name;
+        this.game = game;
+        endTurn();
     }
 
     /**
