@@ -104,7 +104,7 @@ class PlayerTest {
         assertNull(p.drawCard());
     }
 
-    @Disabled
+
     @Test
     void testCardsInHand() {
         //test que le getCardsInHand renvoie bien une liste indépendante
@@ -116,7 +116,7 @@ class PlayerTest {
         assertEquals(p.getHand(), l);
     }
 
-    @Disabled
+
     @Test
     void testTotalCards() {
         assertEquals(10, p.getAllCards().size());

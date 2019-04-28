@@ -140,7 +140,12 @@ public class Player {
      * défausse, la pioche et en jeu)
      */
     public ListOfCards getAllCards() {
-        throw new RuntimeException("Not Implemented");
+        ListOfCards list = new ListOfCards();
+        list.addAll(this.getHand());
+        list.addAll(this.getInPlay());
+        list.addAll(this.getDiscard());
+        list.addAll(this.getDraw());
+        return list;
     }
 
     /**
