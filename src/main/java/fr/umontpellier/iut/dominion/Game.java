@@ -3,15 +3,12 @@ package fr.umontpellier.iut.dominion;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.FactoryListOfCards;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringJoiner;
+import java.util.*;
 
 /**
  * Classe représentant une partie de Dominion
  */
-public class Game {
+public class Game{
     /**
      * Tableau contenant les joueurs de la partie
      */
@@ -129,8 +126,12 @@ public class Game {
      * @return une liste de cartes contenant la première carte de chaque pile
      * non-vide de la réserve (cartes royaume et cartes communes)
      */
-    public ListOfCards availableSupplyCards() {
-        throw new RuntimeException("Not Implemented");
+    public ListOfCards availableSupplyCards(){
+        ListOfCards list = new ListOfCards();
+        for (ListOfCards l: supplyStacks) {
+            if (!l.isEmpty()) list.add(l.get(0));
+        }
+        return list;
     }
 
     /**
@@ -201,7 +202,11 @@ public class Game {
      * ne correspond
      */
     public Card getFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        for (ListOfCards c: supplyStacks) {
+            if (c.getCard(cardName) != null) return c.getCard(cardName);
+            //if (cardName.equals(c.getName())) return c;
+        }
+        return null;
     }
 
     /**
@@ -212,7 +217,14 @@ public class Game {
      * ne correspond au nom passé en argument
      */
     public Card removeFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        for (ListOfCards l: supplyStacks) {
+            Card c = l.getCard(cardName);
+            if (c != null) {
+                l.remove(cardName);
+                return c;
+            }
+        }
+        return null;
     }
 
     /**
@@ -253,8 +265,8 @@ public class Game {
             players.get(currentPlayerIndex).playTurn();
             // passe au joueur suivant
             currentPlayerIndex += 1;
-            if (currentPlayerIndex >= players.size())
-                currentPlayerIndex = 0;
+            if (currentPlayerIndex >= players.size()) currentPlayerIndex = 0;
+
         }
         System.out.println("Game over.");
         // Affiche le score et les cartes de chaque joueur
