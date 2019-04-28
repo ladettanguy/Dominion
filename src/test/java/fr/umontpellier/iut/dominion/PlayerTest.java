@@ -70,7 +70,7 @@ class PlayerTest {
         assertEquals(1, p.getNumberOfBuys());
     }
 
-    @Disabled
+
     @Test
     void testDrawCardSimple() {
         p.addToDraw(new Copper());
@@ -81,7 +81,7 @@ class PlayerTest {
         assertEquals(drawSize - 1, p.getDraw().size());
     }
 
-    @Disabled
+
     @Test
     void testDrawCardEmptyDraw() {
         p.getDiscard().clear();
@@ -95,7 +95,7 @@ class PlayerTest {
         assertEquals(2, p.getDraw().size());
     }
 
-    @Disabled
+
     @Test
     void testDrawCardEmptyDrawEmptyDiscard() {
         p.getDiscard().clear();

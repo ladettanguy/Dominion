@@ -220,7 +220,18 @@ public class Player {
      * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawCard() {
-        throw new RuntimeException("Not Implemented");
+        if (!draw.isEmpty()){
+            return draw.remove(0);
+        }
+        else {
+            discard.shuffle();
+            draw = discard;
+            discard = new ListOfCards();
+            if (!draw.isEmpty()){
+                return draw.remove(0);
+            }
+        }
+        return null;
     }
 
     /**
@@ -232,7 +243,12 @@ public class Player {
      * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawToHand() {
-        throw new RuntimeException("Not Implemented");
+        Card c = drawCard();
+        if(c != null){
+            hand.add(c);
+            return c;
+        }
+        return null;
     }
 
     /**
@@ -373,7 +389,7 @@ public class Player {
      * Ajoute une carte sur le dessus de la pioche du joueur
      */
     public void addToDraw(Card c) {
-        throw new RuntimeException("Not Implemented");
+        draw.add(0,c);
     }
 
     /**
