@@ -31,20 +31,20 @@ class GameTest {
         minimalGame = new Game(playerNames, new String[0]);
     }
 
-    @Disabled
+
     @Test
     void testNbPlayers() {
         assertEquals(3, minimalGame.getNumberOfPlayers());
     }
 
-    @Disabled
+
     @Test
     void testGetPlayer() {
         Player p = minimalGame.getPlayer(1);
         assertEquals("Titi", p.getName());
     }
 
-    @Disabled
+
     @Test
     void testOtherPlayersSize() {
         Player p = minimalGame.getPlayer(1);

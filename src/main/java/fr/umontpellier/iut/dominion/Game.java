@@ -116,7 +116,23 @@ public class Game{
      * premier).
      */
     public List<Player> otherPlayers(Player p) {
-        throw new RuntimeException("Not Implemented");
+        int i = 0;
+        int x = 0;
+        ArrayList<Player> list = new ArrayList<Player>();
+        ArrayList<Player> pl = this.players;
+        for (Player pla: pl) {
+            if (i < this.indexOfPlayer(p))
+            {
+                list.add(pla);
+            }
+            else if (i > this.indexOfPlayer(p))
+            {
+                list.add(x,pla);
+                x++;
+            }
+            i++;
+        }
+        return list;
     }
 
     /**
