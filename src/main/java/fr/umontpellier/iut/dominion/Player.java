@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Copper;
 import fr.umontpellier.iut.dominion.cards.common.Estate;
+import fr.umontpellier.iut.dominion.cards.FactoryListOfCards;
 
 import java.util.*;
 
@@ -324,7 +325,9 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        throw new RuntimeException("Not Implemented");
+        hand.remove(c);
+        inPlay.add(c);
+        c.play(this);
     }
 
     /**
@@ -338,7 +341,7 @@ public class Player {
      * fait rien.
      */
     public void playCard(String cardName) {
-        throw new RuntimeException("Not Implemented");
+
     }
 
     /**

@@ -71,4 +71,5 @@ public final class FactoryListOfCards {
         }
         return stack;
     }
+
 }

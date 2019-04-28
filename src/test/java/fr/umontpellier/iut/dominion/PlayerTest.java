@@ -145,7 +145,7 @@ class PlayerTest {
         assertEquals(12, p.getVictoryPoints());
     }
 
-    @Disabled
+
     @Test
     void testPlayCardValid() {
 
@@ -156,7 +156,7 @@ class PlayerTest {
         assertEquals(1, p.getInPlay().size());
     }
 
-    @Disabled
+
     @Test
     void testPlayCardInvalid() {
 
