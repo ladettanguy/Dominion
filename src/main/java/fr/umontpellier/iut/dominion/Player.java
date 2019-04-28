@@ -156,7 +156,12 @@ public class Player {
      * {@code getVictoryValue()}) des cartes
      */
     public int getVictoryPoints() {
-        throw new RuntimeException("Not Implemented");
+        int vict = 0;
+        ListOfCards list = this.getAllCards();
+        for (Card c: list) {
+            vict += c.getVictoryValue(this);
+        }
+        return vict;
     }
 
     /**
