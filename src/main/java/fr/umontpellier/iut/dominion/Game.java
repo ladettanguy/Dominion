@@ -220,7 +220,6 @@ public class Game{
     public Card getFromSupply(String cardName) {
         for (ListOfCards c: supplyStacks) {
             if (c.getCard(cardName) != null) return c.getCard(cardName);
-            //if (cardName.equals(c.getName())) return c;
         }
         return null;
     }

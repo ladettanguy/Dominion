@@ -127,7 +127,7 @@ class PlayerTest {
         assertEquals(14, p.getAllCards().size());
     }
 
-    @Disabled
+
     @Test
     void testVictoryPoints() {
         assertEquals(3, p.getVictoryPoints());
@@ -167,7 +167,7 @@ class PlayerTest {
         assertEquals(0, p.getInPlay().size());
     }
 
-    @Disabled
+
     @Test
     void testGain() {
         int discard_size = p.getDiscard().size();
@@ -180,7 +180,6 @@ class PlayerTest {
         assertNull(minimalGame.removeFromSupply("Province"));
     }
 
-    @Disabled
     @Test
     void testBuyCard() {
         p.incrementMoney(8);
@@ -193,7 +192,6 @@ class PlayerTest {
         assertEquals(0, p.getMoney());
     }
 
-    @Disabled
     @Test
     void testBuyCardTooExpensive() {
         p.incrementMoney(7);
@@ -206,7 +204,7 @@ class PlayerTest {
         assertEquals(7, p.getMoney());
     }
 
-    @Disabled
+
     @Test
     void testBuyCardNoBuys() {
         p.incrementMoney(8);

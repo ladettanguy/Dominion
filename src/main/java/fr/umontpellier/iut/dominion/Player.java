@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Modélise un joueur de Dominion
  */
-public class Player {
+public class Player extends Exception{
     /**
      * Nom du joueur
      */
@@ -341,7 +341,10 @@ public class Player {
      * fait rien.
      */
     public void playCard(String cardName) {
-
+        Card c = hand.getCard(cardName);
+        if (c != null){
+            this.playCard(c);
+        }
     }
 
     /**
@@ -354,7 +357,7 @@ public class Player {
      * emplacement précédent au préalable.
      */
     public void gain(Card c) {
-        throw new RuntimeException("Not Implemented");
+        if (c != null) discard.add(c);
     }
 
     /**
@@ -367,7 +370,12 @@ public class Player {
      * null} si aucune carte n'a été prise dans la réserve.
      */
     public Card gainFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        Card c = game.removeFromSupply(cardName);
+        if(c != null) {
+            gain(c);
+            return c;
+        }
+        return null;
     }
 
     /**
@@ -385,7 +393,16 @@ public class Player {
      * lieu
      */
     public Card buyCard(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        if(numberOfBuys > 0) {
+            Card c = game.getFromSupply(cardName);
+            if (money >= c.getCost()){
+                Card card = gainFromSupply(cardName);
+                incrementMoney(-card.getCost());
+                numberOfBuys -= 1;
+                return card;
+            }
+        }
+        return null;
     }
 
     /**
