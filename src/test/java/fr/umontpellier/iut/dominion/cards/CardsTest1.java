@@ -37,7 +37,7 @@ class CardsTest1 {
         player = minimalGame.getPlayer(1);
     }
 
-    @Disabled
+
     @Test
     void testInitialState() {
         assertEquals(5, player.getHand().size());

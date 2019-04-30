@@ -2,7 +2,7 @@ package fr.umontpellier.iut.dominion;
 
 
 /**
- * Une extension de la class `Game` dans laquelle la méthode readLine est redéfinie pour lire les
+ *  * Une extension de la class `Game` dans laquelle la méthode readLine est redéfinie pour lire les
  * instructions depuis une liste de chaînes de caractères
  */
 public class BMGame extends Game {

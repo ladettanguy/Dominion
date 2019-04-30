@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Modélise un joueur de Dominion
  */
-public class Player extends Exception{
+public class Player{
     /**
      * Nom du joueur
      */

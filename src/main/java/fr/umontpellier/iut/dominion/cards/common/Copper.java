@@ -1,7 +1,10 @@
 package fr.umontpellier.iut.dominion.cards.common;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.*;
 
 /**
  * Carte Cuivre (Copper)
@@ -16,5 +19,12 @@ public class Copper extends Card {
     @Override
     public void play(Player p) {
         p.incrementMoney(1);
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Treasure);
+        return list;
     }
 }

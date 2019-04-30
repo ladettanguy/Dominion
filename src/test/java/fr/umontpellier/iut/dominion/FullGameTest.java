@@ -21,7 +21,7 @@ class FullGameTest {
 
     }
 
-    @Disabled
+
     @Test
     void testFullGameTwoPlayers() {
         String[] playerNames = new String[]{"Toto", "Titi"};
