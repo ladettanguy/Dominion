@@ -59,7 +59,6 @@ class CardsTest1 {
         assertEquals(3, player.getDraw().size());
     }
 
-    @Disabled
     @Test
     void testVillage() {
         player.getHand().add(new Village());
@@ -70,7 +69,7 @@ class CardsTest1 {
         assertEquals(4, player.getDraw().size());
     }
 
-    @Disabled
+
     @Test
     void testGardens() {
         assertEquals(3, player.getVictoryPoints());  // le joueur a initialement 10 cartes
@@ -91,7 +90,7 @@ class CardsTest1 {
         assertEquals(7, player.getVictoryPoints());  // le joueur a 21 cartes (2 Gardens)
     }
 
-    @Disabled
+
     @Test
     void testSmithy() {
         player.getHand().add(new Smithy());
@@ -100,7 +99,7 @@ class CardsTest1 {
         assertEquals(2, player.getDraw().size());
     }
 
-    @Disabled
+
     @Test
     void testFestival() {
         player.getHand().add(new Festival());
@@ -111,7 +110,7 @@ class CardsTest1 {
         assertEquals(5, player.getHand().size());
     }
 
-    @Disabled
+
     @Test
     void testLaboratory() {
         player.getHand().add(new Laboratory());
@@ -120,7 +119,7 @@ class CardsTest1 {
         assertEquals(1, player.getNumberOfActions());
     }
 
-    @Disabled
+
     @Test
     void testMarket() {
         player.getHand().add(new Market());
