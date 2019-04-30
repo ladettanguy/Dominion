@@ -41,7 +41,7 @@ class CardsTest3 {
         p2 = game.getPlayer(2);
     }
 
-    @Disabled
+
     @Test
     void testMoatReaction() {
         p0.getHand().add(new Moat());

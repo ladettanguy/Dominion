@@ -85,4 +85,6 @@ public abstract class Card {
     public int getVictoryValue(Player p) {
         return 0;
     }
+
+    public boolean react(Player p) {return false;}
 }
