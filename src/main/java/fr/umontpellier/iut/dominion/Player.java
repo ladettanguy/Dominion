@@ -150,6 +150,13 @@ public class Player{
     }
 
     /**
+     *Renvoie la card enlever depuis la list {@code hand}
+     */
+    public Card removeToHand(String cardName){
+        return hand.remove(cardName);
+    }
+
+    /**
      * Renvoie le nombre total de points de victoire du joueur
      *
      * Ce total est calculé en ajoutant les valeurs individuelles de toutes les
@@ -314,6 +321,10 @@ public class Player{
         return "{" + joiner.toString() + "}";
     }
 
+    private void setInPlay(Card c){
+
+    }
+
     /**
      * Joue une carte de la main du joueur.
      *
@@ -329,6 +340,8 @@ public class Player{
         inPlay.add(c);
         c.play(this);
     }
+
+
 
     /**
      * Joue une carte de la main du joueur.
