@@ -585,15 +585,8 @@ public class Player{
         discard.addAll(inPlay);
         hand = new ListOfCards();
         inPlay = new ListOfCards();
-        int count = 0;
-        while ((count < 5) || (discard.isEmpty() && draw.isEmpty())){
-            if (draw.isEmpty()){
-                discard.shuffle();
-                draw = discard;
-                discard = new ListOfCards();
-            }
-            hand.add(draw.remove(0));
-            count++;
+        for (int i = 0; i < 5; i++) {
+            this.drawToHand();
         }
     }
 

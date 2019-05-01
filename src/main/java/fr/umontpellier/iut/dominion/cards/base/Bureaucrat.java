@@ -20,7 +20,7 @@ public class Bureaucrat extends Card {
         super("Bureaucrat", 4);
     }
 
-    /*@Override
+    @Override
     public void play(Player p) {
         ListOfCards listdecarte = p.getGame().availableSupplyCards();
         Card silv = listdecarte.getCard("Silver");
@@ -51,7 +51,7 @@ public class Bureaucrat extends Card {
             }
             else p.getGame().println(pla.getName() + " " + list1);
         }
-    }*/
+    }
 
 
 
