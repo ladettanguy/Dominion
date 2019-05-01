@@ -36,8 +36,9 @@ public class Artisan extends Card {
             }
         }
 
-        String choose = p.chooseCard("Choissisez une carte de votre défausse", supply, !supplyInferior5.isEmpty());
-        p.gainFromSupply(choose);
+        String choose = p.chooseCard("Choissisez une carte de votre défausse", supplyInferior5, !supplyInferior5.isEmpty());
+        Card ca = p.getGame().removeFromSupply(choose);
+        p.addToHand(ca);
 
         ListOfCards hand = p.getHand();
         String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, !hand.isEmpty());
