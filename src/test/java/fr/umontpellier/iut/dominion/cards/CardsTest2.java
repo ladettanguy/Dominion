@@ -218,7 +218,6 @@ class CardsTest2 {
         assertEquals(7, p1.getHand().size());
     }
 
-    @Disabled
     @Test
     void testPoacher() {
         p1.getHand().add(new Poacher());
