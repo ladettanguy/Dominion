@@ -27,30 +27,26 @@ public class Bureaucrat extends Card {
         Card silv = listdecarte.getCard("Silver");
         p.addToDraw(silv);
         List<Player> list = p.getGame().otherPlayers(p);
-        boolean aUneCarteVictory = false;
+        ListOfCards victory = new ListOfCards();
         for (Player pla : list) {
             ListOfCards list1 = pla.getHand();
             for (Card c : list1){
-                if (c.getTypes().contains(CardType.Reaction)){
-                    if(c.react(pla)) break;
-                }
-                if (aUneCarteVictory == false && c.getTypes().contains(CardType.Victory)) aUneCarteVictory = true;
+                if (c.getTypes().contains(CardType.Reaction)) if(c.react(pla)) break;
+                if (c.getTypes().contains(CardType.Victory)) victory.add(c);
             }
-            if (aUneCarteVictory == true){
-                while (true) {
-                    pla.getGame().println("Dévoilé une carte victory de votre main");
-                    String s = pla.getGame().readLine();
-                    Card ca = list1.getCard(s);
-                    if (ca != null && ca.getTypes().contains(CardType.Victory) && list1.contains(ca)) {
-                        p.getGame().println(pla.getName() + " " + s);
-                        p.discardCard(ca);
-                        p.removeToHand(s);
-                        break;
-                    }
-                    else pla.getGame().println("erreur lors du saisi veuillez recommencer");
-                }
+            if (!victory.isEmpty()){
+                String s = pla.chooseCard("choisissez une carte à dévoilé parmis les suivante", victory , false);
+                Card c = pla.removeToHand(s);
+                pla.addToDraw(c);
+                p.getGame().println("le joueur " + pla.getGame() + " à défausser " + s);
             }
-            else p.getGame().println(pla.getName() + " " + list1);
+            else {
+                p.getGame().print("le joueur " + pla.getGame() + " possède : ");
+                for (Card c : list1) {
+                    p.getGame().print(c.toString()+ " ");
+                }
+                p.getGame().print("\n");
+            }
         }
     }
 
