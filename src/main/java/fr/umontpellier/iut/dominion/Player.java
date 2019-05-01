@@ -418,6 +418,18 @@ public class Player{
         return null;
     }
 
+    public Card removeToDiscard (Card c){
+        if (c != null){
+            discard.remove(c);
+        }
+        return c;
+    }
+
+    public Card removeToDiscard (String cardName){
+        Card c = discard.getCard(cardName);
+        return removeToDiscard(c);
+    }
+
     /**
      * Ajoute une carte sur le dessus de la pioche du joueur
      */

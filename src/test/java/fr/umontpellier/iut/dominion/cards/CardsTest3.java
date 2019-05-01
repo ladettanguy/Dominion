@@ -55,7 +55,7 @@ class CardsTest3 {
     }
 
 
-    @Disabled
+
     @Test
     void testThroneRoom() {
         p1.getHand().add(new ThroneRoom());
