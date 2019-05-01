@@ -1,8 +1,12 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Jardins (Gardens)
@@ -21,5 +25,12 @@ public class Gardens extends Card {
         list.addAll(p.getInPlay());
         list.addAll(p.getHand());
         return list.size()/10;
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Victory);
+        return list;
     }
 }

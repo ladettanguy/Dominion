@@ -1,7 +1,11 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Forgeron (Smithy)
@@ -20,4 +24,11 @@ public class Smithy extends Card {
         p.drawToHand();
     }
 
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Action);
+        return list;
+    }
 }

@@ -6,6 +6,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,6 +52,14 @@ public class Bureaucrat extends Card {
             }
             else p.getGame().println(pla.getName() + " " + list1);
         }
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Action);
+        list.add(CardType.Attack);
+        return list;
     }
 
 

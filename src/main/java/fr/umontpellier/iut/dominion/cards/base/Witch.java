@@ -35,4 +35,12 @@ public class Witch extends Card {
             }
         }
     }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Action);
+        list.add(CardType.Attack);
+        return list;
+    }
 }

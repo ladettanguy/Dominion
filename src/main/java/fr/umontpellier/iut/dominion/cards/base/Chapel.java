@@ -1,7 +1,11 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Chapelle (Chapel)
@@ -23,5 +27,12 @@ public class Chapel extends Card {
             if(c != null) count++;
             s = p.getGame().readLine();
         }
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Action);
+        return list;
     }
 }

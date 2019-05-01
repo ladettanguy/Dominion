@@ -1,8 +1,12 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Avant-coureur (Harbinger)
@@ -27,5 +31,12 @@ public class Harbinger extends Card {
         p.addToDraw(c);
         p.removeToDiscard(c);
 
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Action);
+        return list;
     }
 }

@@ -16,16 +16,17 @@ public class ThroneRoom extends Card {
         super("Throne Room", 4);
     }
 
-    /*@Override
+    @Override
     public void play(Player p) {
-        ListOfCards list = p.getCardsInHand();
+        ListOfCards list = p.getHand();
         ListOfCards jouable = new ListOfCards();
-        for (Card c: list) {
+        for (Card c: list)
             if (c.getTypes().contains(CardType.Action))jouable.add(c);
-        }
-        String s = p.chooseCard("choisissez une carte à jouer deux foix parmi les suivante",jouable,true);
+        String s;
+        s = p.chooseCard("choisissez une carte à jouer deux foix parmi les suivante",jouable, jouable.isEmpty());
+        Card c = list.getCard(s);
         p.playCard(s);
-        p.playCard(s);
-        p.
-    }*/
+        if(c != null) c.play(p);
+
+    }
 }
