@@ -23,6 +23,7 @@ public class Silver extends Card {
         if (c != null) {
             p.incrementMoney(1);
             p.removeToInPlay(c);
+            p.discardCard(c);
         }
         p.incrementMoney(2);
     }
