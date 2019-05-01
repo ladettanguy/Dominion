@@ -418,6 +418,18 @@ public class Player{
         return null;
     }
 
+    public  Card removeToInPlay (Card c){
+        if (c != null){
+            inPlay.remove(c);
+        }
+        return c;
+    }
+
+    public  Card removeToInPlay (String cardName){
+        Card c = inPlay.getCard(cardName);
+        return removeToInPlay(c);
+    }
+
     public Card removeToDiscard (Card c){
         if (c != null){
             discard.remove(c);

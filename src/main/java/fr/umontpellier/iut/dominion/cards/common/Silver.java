@@ -19,6 +19,11 @@ public class Silver extends Card {
 
     @Override
     public void play(Player p) {
+        Card c = p.getInPlay().getCard("Merchant");
+        if (c != null) {
+            p.incrementMoney(1);
+            p.removeToInPlay(c);
+        }
         p.incrementMoney(2);
     }
 
