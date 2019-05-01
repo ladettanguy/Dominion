@@ -123,7 +123,6 @@ class CardsTest3 {
         assertTrue(p0.getDiscard().contains(gold));     // p0 a défaussé le Gold
     }
 
-    @Disabled
     @Test
     void testHarbinger() {
         p1.getHand().add(new Harbinger());
@@ -144,7 +143,6 @@ class CardsTest3 {
         assertFalse(p1.getDiscard().contains(gold));
     }
 
-    @Disabled
     @Test
     void testMerchant() {
         p1.getHand().add(new Merchant());
