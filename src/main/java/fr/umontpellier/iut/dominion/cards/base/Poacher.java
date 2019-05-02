@@ -26,28 +26,15 @@ public class Poacher extends Card {
         p.incrementMoney(1);
         p.drawToHand();
 
-        ListOfCards avaibleStacks =  p.getGame().availableSupplyCards();
-        int nbAvaibleStacks = 0;
-        for (Card c : avaibleStacks){
-            nbAvaibleStacks += 1;
+        int nbEmptyStacks = 0;    // nombre de piles vides
+        for (ListOfCards stack : p.getGame().getSupplyStacks()) {
+            // une pile est vide
+            if (stack.isEmpty()) nbEmptyStacks += 1;
         }
-        int nbEmptyStacks = 17 - nbAvaibleStacks;
-        ListOfCards hand = p.getHand();
-
-        if (nbEmptyStacks == 1){
-           String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, !hand.isEmpty());
-           Card c = p.removeToHand(chooseHand);
-           p.discardCard(c);
-        }
-
-        if (nbEmptyStacks == 2){
-            String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, !hand.isEmpty());
-            Card c = p.removeToHand(chooseHand);
-            p.discardCard(c);
-            ListOfCards hand2 = p.getHand();
-            String chooseHand2 = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand2, !hand2.isEmpty());
-            Card ca = p.removeToHand(chooseHand2);
-            p.discardCard(ca);
+        for (int i = 0; i < nbEmptyStacks; i++) {
+            String chooseHand = p.chooseCard("Choissisez une carte de votre main à déffausée", p.getCardsInHand(), false);
+            p.discardCard(p.getHand().getCard(chooseHand));
+            p.removeToHand(chooseHand);
         }
     }
 

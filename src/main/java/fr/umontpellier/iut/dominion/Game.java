@@ -77,6 +77,11 @@ public class Game{
             players.add(new Player(playerName, this));
     }
 
+    public List<ListOfCards> getSupplyStacks() {
+        ArrayList<ListOfCards> list = new ArrayList<ListOfCards>(supplyStacks);
+        return list;
+    }
+
     /**
      * Renvoie le joueur correspondant à l'indice passé en argument
      * On suppose {@code index} est un indice valide du tableau
