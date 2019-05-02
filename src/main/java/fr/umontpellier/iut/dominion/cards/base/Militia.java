@@ -41,7 +41,6 @@ public class Militia extends Card {
             }
             doDiscard(pla, list1);
         }
-
     }
 
     @Override
