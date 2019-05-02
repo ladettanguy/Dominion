@@ -73,7 +73,6 @@ class CardsTest3 {
         assertEquals(7, p1.getHand().size());
     }
 
-    @Disabled
     @Test
     void testLibrary() {
         p1.getDraw().clear();
@@ -97,7 +96,6 @@ class CardsTest3 {
         assertTrue(hasCards(p1.getDiscard(), "Village"));
     }
 
-    @Disabled
     @Test
     void testBandit() {
         p1.getHand().add(new Bandit());

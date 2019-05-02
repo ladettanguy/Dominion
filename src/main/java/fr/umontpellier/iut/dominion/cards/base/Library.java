@@ -25,7 +25,11 @@ public class Library extends Card {
             ArrayList<String> choices = new ArrayList<>();
             choices.add("y");choices.add("n");
             if(c.getTypes().contains(CardType.Action)){
-                p.chooseOption("Voulez-vous d&faussez la carte ?", choices, false);
+                String s = p.chooseOption("Voulez-vous d&faussez la carte ?", choices, false);
+                if (s.equals("y")){
+                     p.discardCard(c);
+                     p.removeToHand(c.getName());
+                }
             }
         }
     }
