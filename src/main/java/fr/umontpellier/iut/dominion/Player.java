@@ -341,6 +341,7 @@ public class Player{
      */
     private void playCard(Card c) {
         inPlay.add(c);
+        hand.remove(c);
         c.play(this);
     }
 
@@ -358,7 +359,7 @@ public class Player{
      */
     public void playCard(String cardName) {
         Card c = hand.getCard(cardName);
-        if (c != null && !inPlay.contains(c)){
+        if (c != null){
             this.playCard(c);
         }
     }
@@ -611,7 +612,9 @@ public class Player{
         discard.addAll(hand);
         hand = new ListOfCards();
         inPlay = new ListOfCards();
-
+        for (int i = 0; i < 5; i++) {
+            this.drawToHand();
+        }
     }
 
     /**
@@ -622,9 +625,6 @@ public class Player{
     public void startTurn() {
         numberOfBuys = 1;
         numberOfActions = 1;
-        for (int i = 0; i < 5; i++) {
-            this.drawToHand();
-        }
     }
 
     /**
@@ -675,7 +675,8 @@ public class Player{
         }
 
         // 3. (Trésor)
-        for (Card c : hand){
+        ListOfCards hand2 = getCardsInHand();
+        for (Card c : hand2){
             if (c.getTypes().contains(CardType.Treasure))
                 playCard(c);
         }

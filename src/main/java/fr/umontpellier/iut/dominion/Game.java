@@ -287,7 +287,8 @@ public class Game{
         // Affiche le score et les cartes de chaque joueur
         for (Player p : players)
             System.out.println(String.format("%s: %d Points.\n%s\n", p.getName(), p.getVictoryPoints(),
-                    p.getAllCards().toString()));
+                    p.getAllCards(
+                    ).toString()));
     }
 
     /**
