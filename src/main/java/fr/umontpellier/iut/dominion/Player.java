@@ -153,7 +153,9 @@ public class Player{
      *Renvoie la card enlever depuis la list {@code hand}
      */
     public Card removeToHand(String cardName){
-        return hand.remove(cardName);
+        Card c = hand.getCard(cardName);
+        if (c != null) hand.remove(c);
+        return c;
     }
 
     public Card removeToDraw (int index){
@@ -675,8 +677,8 @@ public class Player{
         }
 
         // 3. (Trésor)
-        ListOfCards hand2 = getCardsInHand();
-        for (Card c : hand2){
+
+        for (Card c : getCardsInHand()){
             if (c.getTypes().contains(CardType.Treasure))
                 playCard(c);
         }

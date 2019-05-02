@@ -25,14 +25,15 @@ public class Witch extends Card {
         p.drawToHand();
         List<Player> list = p.getGame().otherPlayers(p);
         for (Player pla : list) {
+            boolean react = false;
             ListOfCards list1 = pla.getHand();
             for (Card c : list1){
                 if (c.getTypes().contains(CardType.Reaction)){
-                    if(c.react(pla)) break;
-                    else pla.gainFromSupply("Curse");
+                    react = c.react(pla);
+
                 }
-                else pla.gainFromSupply("Curse");
             }
+            if(!react)pla.gainFromSupply("Curse");
         }
     }
 

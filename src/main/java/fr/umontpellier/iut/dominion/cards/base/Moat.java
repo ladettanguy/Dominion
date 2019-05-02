@@ -34,11 +34,10 @@ public class Moat extends Card {
 
     @Override
     public boolean react(Player p) {
-        p.getGame().println("Si vous voulez faire une réaction avec MOAT tapez : y . sinon tapez: n");
-        String s = p.getGame().readLine();
-        if (s.equals("y")){
-            return true;
-        }
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("y");list.add("n");
+        String s = p.chooseOption("Voulez vous réagir a une carte ATTACK avec Moat ?",list,false);
+        if (s.equals("y"))return true;
         else return false;
     }
 }
