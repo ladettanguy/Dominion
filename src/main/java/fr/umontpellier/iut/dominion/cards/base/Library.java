@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
@@ -15,6 +16,16 @@ import java.util.List;
 public class Library extends Card {
     public Library() {
         super("Library", 5);
+    }
+
+    @Override
+    public void play(Player p) {
+        while(p.getHand().size() < 7){
+            Card c = p.drawToHand();
+            if(c.getTypes().contains(CardType.Action)){
+                p.chooseOption("Voulez-vous d&faussez la carte ?", c, false);
+            }
+        }
     }
 
     @Override
