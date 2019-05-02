@@ -19,7 +19,7 @@ public class Bandit extends Card {
         super("Bandit", 5);
     }
 
-    /*@Override
+    @Override
     public void play(Player p) {
         p.gainFromSupply("Gold");
 
@@ -41,7 +41,7 @@ public class Bandit extends Card {
                 }
             }
         }
-    }*/
+    }
 
     @Override
     public List<CardType> getTypes() {
