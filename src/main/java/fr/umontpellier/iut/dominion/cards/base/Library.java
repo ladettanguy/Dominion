@@ -22,8 +22,10 @@ public class Library extends Card {
     public void play(Player p) {
         while(p.getHand().size() < 7){
             Card c = p.drawToHand();
+            ArrayList<String> choices = new ArrayList<>();
+            choices.add("y");choices.add("n");
             if(c.getTypes().contains(CardType.Action)){
-                p.chooseOption("Voulez-vous d&faussez la carte ?", c, false);
+                p.chooseOption("Voulez-vous d&faussez la carte ?", choices, false);
             }
         }
     }

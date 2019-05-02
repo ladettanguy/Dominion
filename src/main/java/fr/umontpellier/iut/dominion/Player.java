@@ -156,6 +156,10 @@ public class Player{
         return hand.remove(cardName);
     }
 
+    public Card removeToDraw (int index){
+        return draw.remove(index);
+    }
+
     /**
      * Renvoie le nombre total de points de victoire du joueur
      *
@@ -336,7 +340,6 @@ public class Player{
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        hand.remove(c);
         inPlay.add(c);
         c.play(this);
     }
@@ -355,7 +358,7 @@ public class Player{
      */
     public void playCard(String cardName) {
         Card c = hand.getCard(cardName);
-        if (c != null){
+        if (c != null && !inPlay.contains(c)){
             this.playCard(c);
         }
     }
@@ -606,12 +609,9 @@ public class Player{
         money = 0;
         numberOfBuys = 0;
         discard.addAll(hand);
-        discard.addAll(inPlay);
         hand = new ListOfCards();
         inPlay = new ListOfCards();
-        for (int i = 0; i < 5; i++) {
-            this.drawToHand();
-        }
+
     }
 
     /**
@@ -622,7 +622,9 @@ public class Player{
     public void startTurn() {
         numberOfBuys = 1;
         numberOfActions = 1;
-
+        for (int i = 0; i < 5; i++) {
+            this.drawToHand();
+        }
     }
 
     /**

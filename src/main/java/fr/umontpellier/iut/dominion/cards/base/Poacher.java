@@ -36,15 +36,18 @@ public class Poacher extends Card {
 
         if (nbEmptyStacks == 1){
            String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, !hand.isEmpty());
-            p.removeToHand(chooseHand);
+           Card c = p.removeToHand(chooseHand);
+           p.discardCard(c);
         }
 
         if (nbEmptyStacks == 2){
             String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, !hand.isEmpty());
-            p.removeToHand(chooseHand);
+            Card c = p.removeToHand(chooseHand);
+            p.discardCard(c);
             ListOfCards hand2 = p.getHand();
             String chooseHand2 = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand2, !hand2.isEmpty());
-            p.removeToHand(chooseHand);
+            Card ca = p.removeToHand(chooseHand2);
+            p.discardCard(ca);
         }
     }
 

@@ -1,5 +1,8 @@
 package fr.umontpellier.iut.dominion;
 
+import fr.umontpellier.iut.dominion.cards.base.Mine;
+import fr.umontpellier.iut.dominion.cards.base.Vassal;
+
 /**
  * Classe pour l'exécution d'une partie de Dominion
  */
@@ -11,11 +14,12 @@ class AppDominion {
         String[] playerNames = new String[]{"Marco", "Polo"};
 
         // Changer les noms des classes selon les cartes à utiliser dans la partie.
-        String[] kingdomCards = {"Cellar", "Chapel", "Moat", "Village", "Workshop",
+        String[] kingdomCards = {"Cellar", "Mine", "Moat", "Village", "Workshop",
                 "Militia", "Smithy", "ThroneRoom", "Laboratory", "Witch"};
 
         // Instancie et exécute une partie
         Game g = new Game(playerNames, kingdomCards);
         g.run();
+
     }
 }
