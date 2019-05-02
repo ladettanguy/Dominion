@@ -1,6 +1,8 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.ListOfCards;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
@@ -17,6 +19,17 @@ public class Moneylender extends Card {
         super("Moneylender", 4);
     }
 
+    @Override
+    public void play(Player p) {
+        ListOfCards list = p.getCardsInHand();
+        for (Card c: list) {
+            if (c.getName().equals("Copper")){
+                p.removeToHand("Copper");
+                p.incrementMoney(3);
+                break;
+            }
+        }
+    }
 
     @Override
     public List<CardType> getTypes() {
