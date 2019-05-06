@@ -612,6 +612,7 @@ public class Player{
         money = 0;
         numberOfBuys = 0;
         discard.addAll(hand);
+        discard.addAll(inPlay);
         hand = new ListOfCards();
         inPlay = new ListOfCards();
         for (int i = 0; i < 5; i++) {

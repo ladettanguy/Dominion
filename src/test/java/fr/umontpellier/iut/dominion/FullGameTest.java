@@ -35,7 +35,6 @@ class FullGameTest {
         assertEquals(6 + 6 * 8, score0 + score1);
     }
 
-    @Disabled
     @Test
     void testFullGameThreePlayers() {
         String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
@@ -52,7 +51,6 @@ class FullGameTest {
     }
 
 
-    @Disabled
     @Test
     void testFullGameFourPlayers() {
         String[] playerNames = new String[]{"Toto", "Titi", "Tutu", "Lolo"};
