@@ -25,14 +25,9 @@ public class Workshop extends Card {
         for (Card c: list1) {
             if (c.getCost() > 5) list.remove(c);
         }
-        while (true) {
-            p.getGame().println("Choisissez parmis ces cartes :" + list);
-            String s = p.getGame().readLine();
-            if (list.getCard(s) != null) {
-                p.gainFromSupply(s);
-                break;
-            } else p.getGame().println("Erreur en entrant le nom de la carte veuillez recommencez");
-        }
+        String s =p.chooseCard("Choisissez parmi ces cartes :", list , true);
+        p.gainFromSupply(s);
+
     }
     
     @Override

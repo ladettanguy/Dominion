@@ -678,7 +678,6 @@ public class Player{
         }
 
         // 3. (Trésor)
-
         for (Card c : getCardsInHand()){
             if (c.getTypes().contains(CardType.Treasure))
                 playCard(c);

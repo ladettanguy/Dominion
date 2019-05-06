@@ -46,7 +46,7 @@ public class Sentry extends Card {
             }
         }
         if (!list.isEmpty()){
-            String choix = p.chooseCard("Choissiez la carte que vous voulez metre en premier au dessus de draw : ", list, false);
+            String choix = p.chooseCard("Choissiez la carte que vous voulez metre en premier dans draw : ", list, false);
             Card c = list.remove(choix);
             p.addToDraw(c);
             p.addToDraw(list.get(0));
