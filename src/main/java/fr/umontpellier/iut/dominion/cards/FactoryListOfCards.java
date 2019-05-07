@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion.cards;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
+import fr.umontpellier.iut.dominion.cards.extension_Properity.WorkersVillage;
 
 import java.util.HashMap;
 
@@ -53,6 +54,7 @@ public final class FactoryListOfCards {
         dicoCards.put("Artisan", Artisan.class);
         dicoCards.put("Colony",Colony.class);
         dicoCards.put("Platinium",Platinium.class);
+        dicoCards.put("Worker's Village", WorkersVillage.class);
     }
 
     /**
