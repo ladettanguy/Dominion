@@ -3,10 +3,7 @@ package fr.umontpellier.iut.dominion.cards;
 import fr.umontpellier.iut.dominion.IOGame;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
-import fr.umontpellier.iut.dominion.cards.common.Copper;
-import fr.umontpellier.iut.dominion.cards.common.Duchy;
-import fr.umontpellier.iut.dominion.cards.common.Gold;
-import fr.umontpellier.iut.dominion.cards.common.Silver;
+import fr.umontpellier.iut.dominion.cards.common.*;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -43,6 +40,15 @@ class CardsTestExtension {
         p0 = game.getPlayer(0);
         p1 = game.getPlayer(1);
         p2 = game.getPlayer(2);
+    }
+
+    @Test
+    void testPlatinum() {
+        p0.getHand().add(new Platinum());
+
+        p0.playCard("Platinum");
+
+        assertEquals(5,p0.getMoney());
     }
 
     @Test
