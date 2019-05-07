@@ -15,7 +15,6 @@ public abstract class Action extends Card {
      */
     public Action(String name, int cost) {
         super(name, cost);
-
     }
 
     public List<CardType> getTypes(){

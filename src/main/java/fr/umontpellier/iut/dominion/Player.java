@@ -79,6 +79,7 @@ public class Player{
         discard = new ListOfCards();
         inPlay = new ListOfCards();
         draw = new ListOfCards();
+        victoryPoint = 0;
         for (int i = 0; i < 7; i++) {
             discard.add(new Copper());
         }
@@ -180,7 +181,7 @@ public class Player{
         for (Card c: list) {
             vict += c.getVictoryValue(this);
         }
-        return vict;
+        return vict + victoryPoint;
     }
 
     /**
