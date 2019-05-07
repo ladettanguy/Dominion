@@ -204,4 +204,16 @@ class CardsTestExtension {
         assertNull(p2.getHand().getCard("Silver"));
     }
 
+    @Test
+    void testForge() {
+        p2.getHand().add(new Forge());
+        p2.getHand().add(new Village());
+        p2.getHand().add(new Village());
+        game.setInput("Village","Village","Colony","Gold");
+        p2.playCard("Forge");
+
+        assertNull(p2.getDiscard().getCard("Village"));
+        assertNull(p2.getDiscard().getCard("Colony"));
+        assertNotNull(p2.getDiscard().getCard("Gold"));
+    }
 }

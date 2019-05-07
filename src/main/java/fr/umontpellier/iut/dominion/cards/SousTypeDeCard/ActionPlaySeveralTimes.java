@@ -6,7 +6,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
-public class ActionPlaySeveralTimes extends Action {
+public abstract class ActionPlaySeveralTimes extends Action {
     public ActionPlaySeveralTimes(String name, int cost) {
         super(name, cost);
     }
