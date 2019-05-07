@@ -1,20 +1,21 @@
-package fr.umontpellier.iut.dominion.cards.base;
+package fr.umontpellier.iut.dominion.cards.extension_Properity;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
-import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
- * Carte Salle du trône (Throne Room)
+ * Carte court du trône (King's Court)
  *
  * Choisissez 1 carte Action de votre main.
- * Jouez-la deux fois.
+ * Jouez-la trois fois.
  */
-public class ThroneRoom extends Action {
-    public ThroneRoom() {
-        super("Throne Room", 4);
+
+public class KingsCourt  extends Action {
+    public KingsCourt() {
+        super("King's Court", 7);
     }
 
     @Override
@@ -23,10 +24,10 @@ public class ThroneRoom extends Action {
         ListOfCards jouable = new ListOfCards();
         for (Card c: list)
             if (c.getTypes().contains(CardType.Action))jouable.add(c);
-        String s;
-        s = p.chooseCard("choisissez une carte à jouer deux fois parmi les suivantes",jouable, jouable.isEmpty());
+        String s = p.chooseCard("choisissez une carte à jouer trois fois parmi les suivantes",jouable , jouable.isEmpty());
         Card c = list.getCard(s);
         p.playCard(s);
+        if(c != null) c.play(p);
         if(c != null) c.play(p);
     }
 }
