@@ -21,8 +21,8 @@ public class Monument extends Action {
 
     @Override
     public void play(Player p) {
-    p.incrementVictoryPoint(1);
-    p.incrementMoney(2);
+        p.incrementVictoryPoint(1);
+        p.incrementMoney(2);
     }
 
     @Override

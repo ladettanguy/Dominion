@@ -21,23 +21,13 @@ public class City extends Action {
         int nbEmptyStacks = 0;    // nombre de piles vides
         for (ListOfCards stack : p.getGame().getSupplyStacks()) {
             // une pile est vide
-            if (stack.isEmpty()) nbEmptyStacks += 1;
+            if(stack.isEmpty()) nbEmptyStacks += 1 ;
+            if(nbEmptyStacks == 2) break;
         }
-
-        if( nbEmptyStacks <= 1){
-            p.drawToHand();
-        }
-
-        if(nbEmptyStacks <= 2){
+        if(nbEmptyStacks >= 1) p.drawToHand();
+        if(nbEmptyStacks >= 2){
             p.incrementBuys(1);
             p.incrementMoney(1);
         }
-    }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
     }
 }

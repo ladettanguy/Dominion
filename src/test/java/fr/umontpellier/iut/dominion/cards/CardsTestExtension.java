@@ -8,6 +8,7 @@ import fr.umontpellier.iut.dominion.cards.common.Duchy;
 import fr.umontpellier.iut.dominion.cards.common.Gold;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.Bishop;
+import fr.umontpellier.iut.dominion.cards.extension_Properity.City;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.Loan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,7 +76,60 @@ class CardsTestExtension {
         assertEquals(1,p0.getMoney());
     }
 
+    @Test
+    void testCityWithTwoEmptyStack() {
+        p0.getHand().add(new City());
+        p0.addToDraw(new Loan());
+        p0.addToDraw(new Bishop());
 
+        for (int i = 0; i < 99; i++) { game.removeFromSupply("Silver"); }   // vider la pile de Silver
+        for (int i = 0; i < 99; i++) { game.removeFromSupply("Gold"); }     // vider la pile de Gold
 
+        p0.playCard("City");
+
+        assertEquals(2,p0.getNumberOfActions());
+        assertEquals(1,p0.getMoney());
+        assertEquals(1,p0.getNumberOfBuys());
+        assertNull(p0.getDraw().getCard("Loan"));
+        assertNull(p0.getDraw().getCard("Bishop"));
+        assertNotNull(p0.getHand().getCard("Loan"));
+        assertNotNull(p0.getHand().getCard("Bishop"));
+    }
+
+    @Test
+    void testCityWithOneEmptyStack() {
+        p0.getHand().add(new City());
+        p0.addToDraw(new Loan());
+        p0.addToDraw(new Bishop());
+
+        for (int i = 0; i < 99; i++) { game.removeFromSupply("Silver"); }   // vider la pile de Silver
+
+        p0.playCard("City");
+
+        assertEquals(2,p0.getNumberOfActions());
+        assertEquals(0,p0.getMoney());
+        assertEquals(0,p0.getNumberOfBuys());
+        assertNull(p0.getDraw().getCard("Loan"));
+        assertNull(p0.getDraw().getCard("Bishop"));
+        assertNotNull(p0.getHand().getCard("Loan"));
+        assertNotNull(p0.getHand().getCard("Bishop"));
+    }
+
+    @Test
+    void testCityWithoutEmptyStack() {
+        p0.getHand().add(new City());
+        p0.addToDraw(new Loan());
+        p0.addToDraw(new Bishop());
+
+        p0.playCard("City");
+
+        assertEquals(2,p0.getNumberOfActions());
+        assertEquals(0,p0.getMoney());
+        assertEquals(0,p0.getNumberOfBuys());
+        assertNotNull(p0.getDraw().getCard("Loan"));
+        assertNull(p0.getDraw().getCard("Bishop"));
+        assertNull(p0.getHand().getCard("Loan"));
+        assertNotNull(p0.getHand().getCard("Bishop"));
+    }
 
 }
