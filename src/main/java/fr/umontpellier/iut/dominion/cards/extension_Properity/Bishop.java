@@ -1,6 +1,5 @@
 package fr.umontpellier.iut.dominion.cards.extension_Properity;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;

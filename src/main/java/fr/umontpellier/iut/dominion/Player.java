@@ -141,6 +141,9 @@ public class Player{
         return new ListOfCards(hand);
     }
 
+    public ListOfCards getCardsInDraw() {
+        return new ListOfCards(draw);
+    }
     /**
      * Renvoie une liste de toutes les cartes possédées par le joueur
      * (le deck complet c'est-à-dire toutes les cartes dans la main, la
@@ -454,6 +457,10 @@ public class Player{
     public Card removeToDiscard (String cardName){
         Card c = discard.getCard(cardName);
         return removeToDiscard(c);
+    }
+
+    public int getCountOfPoints() {
+        return victoryPoint;
     }
 
     /**
