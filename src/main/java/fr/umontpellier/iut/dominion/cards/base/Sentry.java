@@ -4,6 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * Regardez les 2 premières cartes de votre deck. Écartez et/ou défaussez celles que vous voulez.
  * Replacez le sur votre deck dans l'ordre de votre choix.
  */
-public class Sentry extends Card {
+public class Sentry extends Action {
     public Sentry() {
         super("Sentry", 5);
     }

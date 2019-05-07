@@ -4,6 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.ListOfCards;
+import fr.umontpellier.iut.dominion.cards.type.ActionAttack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * +2 Cartes.
  * Tous vos adversaires recoivent une carte Curse.
  */
-public class Witch extends Card {
+public class Witch extends ActionAttack {
     public Witch() {
         super("Witch", 5);
     }

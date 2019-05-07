@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion.cards.common;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Treasure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * 2 Pièces
  */
-public class Silver extends Card {
+public class Silver extends Treasure {
     public Silver() {
         super("Silver", 3);
     }

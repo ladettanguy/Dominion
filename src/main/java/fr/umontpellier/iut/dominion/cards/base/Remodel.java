@@ -4,6 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * Écartez une carte de votre main.
  * Recevez une carte coûtant jusqu'à 2 Pièces de plus que la carte écartée.
  */
-public class Remodel extends Card {
+public class Remodel extends Action {
     public Remodel() {
         super("Remodel", 4);
     }

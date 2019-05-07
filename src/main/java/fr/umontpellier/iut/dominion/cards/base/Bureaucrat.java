@@ -5,6 +5,7 @@ import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * Tous vos adversaires dévoilent une carte Victoire et la placent sur leur deck (sinon ils dévoilent leur
  * main afin que vous puissiez voir qu'ils n'ont pas de cartes Victoire).
  */
-public class Bureaucrat extends Card {
+public class Bureaucrat extends Action {
     public Bureaucrat() {
         super("Bureaucrat", 4);
     }

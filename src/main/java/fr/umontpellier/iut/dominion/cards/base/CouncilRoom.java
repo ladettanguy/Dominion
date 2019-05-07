@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * +1 Achat.
  * Tous vos adversaires piochent 1 carte.
  */
-public class CouncilRoom extends Card {
+public class CouncilRoom extends Action {
     public CouncilRoom() {
         super("Council Room", 5);
     }

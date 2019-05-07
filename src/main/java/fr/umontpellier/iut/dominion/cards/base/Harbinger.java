@@ -4,6 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * +1 Action.
  * Regardez dans votre défausse, vous pouvez prendre une carte et la mettre sur votre deck.
  */
-public class Harbinger extends Card {
+public class Harbinger extends Action {
     public Harbinger() {
         super("Harbinger", 3);
     }

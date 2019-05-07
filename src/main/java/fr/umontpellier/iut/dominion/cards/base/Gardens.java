@@ -4,6 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Victory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * Vaut 1VP pour chaque 10 cartes dans votre deck (arrondi à l'unité inférieure).
  */
-public class Gardens extends Card {
+public class Gardens extends Victory {
     public Gardens() {
         super("Gardens", 4);
     }

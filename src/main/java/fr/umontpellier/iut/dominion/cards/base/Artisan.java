@@ -4,6 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * Gagnez une carte coûtant jusqu'à 5 Pièces dans votre main.
  * Mettez une carte de votre main sur votre deck.
  */
-public class Artisan extends Card {
+public class Artisan extends Action {
     public Artisan() {
         super("Artisan", 6);
     }

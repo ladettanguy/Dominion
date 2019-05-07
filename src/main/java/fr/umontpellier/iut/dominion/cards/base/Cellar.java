@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * Défaussez autant de cartes que vous voulez.
  * +1 Carte par carte défaussée.
  */
-public class Cellar extends Card {
+public class Cellar extends Action {
     public Cellar() {
         super("Cellar", 2);
     }
