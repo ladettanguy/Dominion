@@ -174,4 +174,16 @@ class CardsTestExtension {
         assertNotNull(p0.getDraw().getCard("Royal Seal"));
     }
 
+    @Test
+    void testWorkersVillage() {
+        p0.getHand().add(new WorkersVillage());
+        Card c1 = p0.getDraw().get(0);
+
+        p0.playCard("Worker's Village");
+
+        assertEquals(2, p0.getNumberOfActions());
+        assertEquals(1, p0.getNumberOfBuys());
+        assertTrue(p0.getHand().contains(c1));
+    }
+
 }
