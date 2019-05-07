@@ -8,18 +8,19 @@ import fr.umontpellier.iut.dominion.cards.type.Victory;
 import java.util.ArrayList;
 import java.util.List;
 
+// coute 11 et donne 10 Victory Point
 /**
- * Carte Province
+ * Carte Colonie (Colony)
  *
- * 6 VP
+ * 10 VP
  */
-public class Province extends Victory {
-    public Province() {
-        super("Province", 8);
-    }
 
+public class Colony extends Victory {
+    public Colony() {
+        super("Colony", 11);
+    }
     public int getVictoryValue(Player p){
-        return 6;
+        return 10;
     }
 
     @Override
