@@ -7,6 +7,13 @@ import fr.umontpellier.iut.dominion.cards.type.Action;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Carte Monument (Monument)
+ * Coute 4
+ * money +2
+ * Victory point +1
+ */
+
 public class Monument extends Action {
     public Monument() {
         super("Monument", 4);
