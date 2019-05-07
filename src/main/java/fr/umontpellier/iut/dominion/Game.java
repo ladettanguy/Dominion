@@ -65,9 +65,11 @@ public class Game{
         supplyStacks.add(FactoryListOfCards.createCardList(60, "Copper"));
         supplyStacks.add(FactoryListOfCards.createCardList(40, "Silver"));
         supplyStacks.add(FactoryListOfCards.createCardList(30, "Gold"));
+        supplyStacks.add(FactoryListOfCards.createCardList(12,"Platinium"));
         supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Estate"));
         supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Duchy"));
         supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Province"));
+        supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures,"Colony"));
         supplyStacks.add(FactoryListOfCards.createCardList(10 * (nbPlayers - 1), "Curse"));
 
 
@@ -259,17 +261,24 @@ public class Game{
      * c'est que la partie est terminée)
      */
     public boolean isFinished() {
+        boolean hasColony = false;
         boolean hasProvince = false;
         int nbEmptyStacks = 0;    // nombre de piles vides
         for (ListOfCards stack : supplyStacks)
             // une pile est vide
             if (stack.isEmpty())
                 nbEmptyStacks += 1;
-            else
+            else {
                 // il reste encore des Provinces
                 if (stack.get(0).getName().equals("Province"))
                     hasProvince = true;
-        return (nbEmptyStacks >= 3 || !hasProvince);
+
+                // il reste encore des Colony
+                if (stack.get(0).getName().equals("Colony"))
+                    hasColony = true;
+            }
+
+        return (nbEmptyStacks >= 3 || !hasColony || !hasProvince);
     }
 
     /**
