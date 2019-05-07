@@ -9,6 +9,7 @@ import fr.umontpellier.iut.dominion.cards.common.Gold;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.Bishop;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.City;
+import fr.umontpellier.iut.dominion.cards.extension_Properity.KingsCourt;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.Loan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -130,6 +131,25 @@ class CardsTestExtension {
         assertNull(p0.getDraw().getCard("Bishop"));
         assertNull(p0.getHand().getCard("Loan"));
         assertNotNull(p0.getHand().getCard("Bishop"));
+    }
+
+    @Test
+    void testKingsCourt() {
+        p0.getHand().add(new KingsCourt());
+        p0.getHand().add(new Village());
+        Card c1 = p0.getDraw().get(0);
+        Card c2 = p0.getDraw().get(1);
+        Card c3 = p0.getDraw().get(2);
+
+
+        game.setInput("Village");
+
+        p0.playCard("King's Court");
+
+        assertEquals(6,p0.getNumberOfActions());
+        assertTrue(p0.getHand().contains(c1));
+        assertTrue(p0.getHand().contains(c2));
+        assertTrue(p0.getHand().contains(c3));
     }
 
 }

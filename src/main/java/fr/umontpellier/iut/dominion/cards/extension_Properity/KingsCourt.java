@@ -20,14 +20,11 @@ public class KingsCourt  extends Action {
 
     @Override
     public void play(Player p) {
-        ListOfCards list = p.getHand();
-        ListOfCards jouable = new ListOfCards();
-        for (Card c: list)
-            if (c.getTypes().contains(CardType.Action))jouable.add(c);
-        String s = p.chooseCard("choisissez une carte à jouer trois fois parmi les suivantes",jouable , jouable.isEmpty());
-        Card c = list.getCard(s);
+        ListOfCards action = new ListOfCards();
+        for (Card c: p.getCardsInHand()) if (c.getTypes().contains(CardType.Action))action.add(c);
+        String s = p.chooseCard("choisissez une carte à jouer trois fois parmi les suivantes",action , action.isEmpty());
+        Card c = p.getHand().getCard(s);
         p.playCard(s);
-        if(c != null) c.play(p);
-        if(c != null) c.play(p);
+        if(c != null){c.play(p);c.play(p);}
     }
 }

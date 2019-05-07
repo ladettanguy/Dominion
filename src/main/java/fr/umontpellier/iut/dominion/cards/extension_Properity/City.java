@@ -8,6 +8,13 @@ import fr.umontpellier.iut.dominion.cards.type.Action;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * +1 Card
+ * +2 Action
+ *
+ * Si il y a 1ou+ de stackEmpty +1 Card
+ * Si il y a 2ou+ de stackEmpty +1 Buy, +1 Money
+ */
 public class City extends Action {
     public City() {
         super("City", 5);
