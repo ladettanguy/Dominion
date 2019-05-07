@@ -7,7 +7,8 @@ public class Monument extends Action {
     public Monument() {
         super("Monument", 4);
     }
-    //public int getVictoryValue(Player p){
-        //return 10;
-    //}
+
+    @Override
+    public void play(Player p) {
+    }
 }

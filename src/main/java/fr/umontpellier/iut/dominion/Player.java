@@ -32,6 +32,11 @@ public class Player{
     private int money;
 
     /**
+     * Compteur de Point de Victoire
+     */
+    private int victoryPoint;
+
+    /**
      * La partie en cours
      */
     private Game game;
@@ -202,6 +207,8 @@ public class Player{
     public void incrementActions(int n) {
         numberOfActions += n;
     }
+
+    public void incrementVictoryPoint(int n) { victoryPoint += n; }
 
     /**
      * Incrémente le nombre de pièces du joueur
