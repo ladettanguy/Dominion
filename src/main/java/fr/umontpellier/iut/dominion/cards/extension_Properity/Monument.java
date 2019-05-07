@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * Carte Monument (Monument)
- * Coute 4
  * money +2
  * Victory point +1
  */

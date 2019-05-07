@@ -7,10 +7,7 @@ import fr.umontpellier.iut.dominion.cards.common.Copper;
 import fr.umontpellier.iut.dominion.cards.common.Duchy;
 import fr.umontpellier.iut.dominion.cards.common.Gold;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
-import fr.umontpellier.iut.dominion.cards.extension_Properity.Bishop;
-import fr.umontpellier.iut.dominion.cards.extension_Properity.City;
-import fr.umontpellier.iut.dominion.cards.extension_Properity.KingsCourt;
-import fr.umontpellier.iut.dominion.cards.extension_Properity.Loan;
+import fr.umontpellier.iut.dominion.cards.extension_Properity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -150,6 +147,16 @@ class CardsTestExtension {
         assertTrue(p0.getHand().contains(c1));
         assertTrue(p0.getHand().contains(c2));
         assertTrue(p0.getHand().contains(c3));
+    }
+
+    @Test
+    void testMonument() {
+        p0.getHand().add(new Monument());
+
+        p0.playCard("Monument");
+
+        assertEquals(2,p0.getMoney());
+        assertEquals(1,p0.getCountOfPoints());
     }
 
 }
