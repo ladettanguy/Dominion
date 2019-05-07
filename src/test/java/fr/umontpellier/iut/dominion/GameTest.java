@@ -82,14 +82,15 @@ class GameTest {
         assertNull(minimalGame.removeFromSupply("Blop"));
     }
 
-    @Test
-    void testNbAvailableSupplies() {
-        assertEquals(7, minimalGame.availableSupplyCards().size());
-        for (int i = 0; i < 12; i++)
-            minimalGame.removeFromSupply("Estate");
-
-        assertEquals(6, minimalGame.availableSupplyCards().size());
-    }
+    //TEST CHANGER CAR COLONY + PLATINUM
+    @Test  //TEST CHANGER CAR COLONY + PLATINUM
+    void testNbAvailableSupplies() { //TEST CHANGER CAR COLONY + PLATINUM
+        assertEquals(7+2, minimalGame.availableSupplyCards().size()); //TEST CHANGER CAR COLONY + PLATINUM
+        for (int i = 0; i < 12; i++) //TEST CHANGER CAR COLONY + PLATINUM
+            minimalGame.removeFromSupply("Estate"); //TEST CHANGER CAR COLONY + PLATINUM
+        //TEST CHANGER CAR COLONY + PLATINUM
+        assertEquals(6+2, minimalGame.availableSupplyCards().size()); //TEST CHANGER CAR COLONY + PLATINUM
+    } //TEST CHANGER CAR COLONY + PLATINUM
 
     @Test
     void testNbCardsInSupplies() {

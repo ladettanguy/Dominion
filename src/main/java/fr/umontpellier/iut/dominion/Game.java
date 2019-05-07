@@ -65,7 +65,7 @@ public class Game{
         supplyStacks.add(FactoryListOfCards.createCardList(60, "Copper"));
         supplyStacks.add(FactoryListOfCards.createCardList(40, "Silver"));
         supplyStacks.add(FactoryListOfCards.createCardList(30, "Gold"));
-        supplyStacks.add(FactoryListOfCards.createCardList(12,"Platinium"));
+        supplyStacks.add(FactoryListOfCards.createCardList(12,"Platinum"));
         supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Estate"));
         supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Duchy"));
         supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Province"));

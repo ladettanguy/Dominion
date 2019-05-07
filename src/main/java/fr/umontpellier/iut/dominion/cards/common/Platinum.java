@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Carte Platine (Platinium)
+ * Carte Platine (Platinum)
  *
  * 5 Pièces
  */
 
-public class Platinium extends Victory {
-    public Platinium() { super("Platinium", 9); }
+public class Platinum extends Victory {
+    public Platinum() { super("Platinum", 9); }
 
     @Override
     public void play(Player p) {
