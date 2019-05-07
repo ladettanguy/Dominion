@@ -1,8 +1,12 @@
 package fr.umontpellier.iut.dominion.cards.type;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.cards.Card;
 
-public abstract class ActionAttack extends Card {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class ActionAttack extends Action {
     /**
      * Constructeur simple
      *
@@ -11,5 +15,12 @@ public abstract class ActionAttack extends Card {
      */
     public ActionAttack(String name, int cost) {
         super(name, cost);
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = super.getTypes();
+        list.add(CardType.Attack);
+        return list;
     }
 }

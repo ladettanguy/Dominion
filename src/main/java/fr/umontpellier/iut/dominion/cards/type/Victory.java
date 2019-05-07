@@ -1,6 +1,10 @@
 package fr.umontpellier.iut.dominion.cards.type;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Victory extends Card {
     /**
@@ -11,5 +15,12 @@ public abstract class Victory extends Card {
      */
     public Victory(String name, int cost) {
         super(name, cost);
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> list = new ArrayList<>();
+        list.add(CardType.Victory);
+        return list;
     }
 }
