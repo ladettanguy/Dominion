@@ -51,6 +51,8 @@ public final class FactoryListOfCards {
         dicoCards.put("Sentry", Sentry.class);
         dicoCards.put("Witch", Witch.class);
         dicoCards.put("Artisan", Artisan.class);
+        dicoCards.put("Colony",Colony.class);
+        dicoCards.put("Platinium",Platinium.class);
     }
 
     /**
