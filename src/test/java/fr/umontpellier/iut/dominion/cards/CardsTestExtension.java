@@ -192,4 +192,16 @@ class CardsTestExtension {
         assertTrue(p0.getHand().contains(c1));
     }
 
+    @Test
+    void testExpand() {
+        p2.getHand().add(new Expand());
+        p2.getHand().add(new Silver());
+        game.setInput("Silver","Colony","Gold");
+        p2.playCard("Expand");
+
+        assertNull(p2.getDiscard().getCard("Colony"));
+        assertNotNull(p2.getDiscard().getCard("Gold"));
+        assertNull(p2.getHand().getCard("Silver"));
+    }
+
 }
