@@ -293,6 +293,9 @@ public class Player{
         discard.add(c);
     }
 
+    public ListOfCards getCardsInInplay(){
+        return new ListOfCards(inPlay);
+    }
     /**
      * Renvoie une représentation de l'état du joueur sous forme d'une chaîne
      * de caractères.
@@ -388,6 +391,11 @@ public class Player{
      */
     public void gain(Card c) {
         if (c != null) discard.add(c);
+        for (Card card: getCardsInInplay()) {
+            if(card.getName().equals("Royal Seal")){
+                draw.add(removeToInPlay(card));
+            }
+        }
     }
 
     /**

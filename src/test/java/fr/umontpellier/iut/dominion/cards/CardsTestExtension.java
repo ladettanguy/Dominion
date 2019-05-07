@@ -9,6 +9,7 @@ import fr.umontpellier.iut.dominion.cards.common.Gold;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -157,6 +158,20 @@ class CardsTestExtension {
 
         assertEquals(2,p0.getMoney());
         assertEquals(1,p0.getCountOfPoints());
+    }
+
+
+    @Test
+    void testRoyalSeal() {
+        p0.getHand().add(new RoyalSeal());
+        p0.incrementBuys(1);
+        p0.playCard("Royal Seal");
+
+        p0.buyCard("Copper");
+
+        assertEquals(2, p0.getMoney());
+        assertNotNull(p0.getHand().getCard("Copper"));
+        assertNotNull(p0.getDraw().getCard("Royal Seal"));
     }
 
 }
