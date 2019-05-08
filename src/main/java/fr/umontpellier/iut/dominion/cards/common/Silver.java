@@ -20,11 +20,9 @@ public class Silver extends Treasure {
 
     @Override
     public void play(Player p) {
-        Card c = p.getInPlay().getCard("Merchant");
-        if (c != null) {
+        if (p.isHasMerchantEffect()>0) {
             p.incrementMoney(1);
-            p.removeToInPlay(c);
-            p.discardCard(c);
+            p.setHasMerchantEffect(-1);
         }
         p.incrementMoney(2);
     }

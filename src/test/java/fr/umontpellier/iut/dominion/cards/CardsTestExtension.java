@@ -209,7 +209,9 @@ class CardsTestExtension {
         p2.getHand().add(new Forge());
         p2.getHand().add(new Village());
         p2.getHand().add(new Village());
-        game.setInput("Village","Village","Colony","Gold");
+
+        game.setInput("Village","Village","","Gold");
+
         p2.playCard("Forge");
 
         assertNull(p2.getDiscard().getCard("Village"));

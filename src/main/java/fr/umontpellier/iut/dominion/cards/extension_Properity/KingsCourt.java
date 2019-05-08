@@ -1,11 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.extension_Properity;
 
-import fr.umontpellier.iut.dominion.CardType;
-import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.SousTypeDeCard.ActionPlaySeveralTimes;
-import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
  * Carte court du trône (King's Court)
@@ -20,7 +16,5 @@ public class KingsCourt  extends ActionPlaySeveralTimes {
     }
 
     @Override
-    public void play(Player p) {
-        super.play(p,3);
-    }
+    public void play(Player p) {super.play(p,3);}
 }

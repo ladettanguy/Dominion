@@ -41,6 +41,8 @@ public class Player{
      */
     private Game game;
 
+    private int hasMerchantEffect;
+
     /**
      * Liste des cartes dans la main du joueur
      */
@@ -80,6 +82,7 @@ public class Player{
         inPlay = new ListOfCards();
         draw = new ListOfCards();
         victoryPoint = 0;
+        hasMerchantEffect =0;
         for (int i = 0; i < 7; i++) {
             discard.add(new Copper());
         }
@@ -89,6 +92,14 @@ public class Player{
         this.name = name;
         this.game = game;
         endTurn();
+    }
+
+    public void setHasMerchantEffect(int hasMerchantEffect) {
+        this.hasMerchantEffect += hasMerchantEffect;
+    }
+
+    public int isHasMerchantEffect() {
+        return hasMerchantEffect;
     }
 
     /**
