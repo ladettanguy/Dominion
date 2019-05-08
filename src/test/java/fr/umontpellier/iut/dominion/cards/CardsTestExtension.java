@@ -261,5 +261,22 @@ class CardsTestExtension {
         assertEquals(1,p2.getMoney());
     }
 
+    @Test
+    void testBank() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //remet des carte en main
+        p2.getHand().add(new Bank());
+        p2.getHand().add(new Copper());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Gold());
+        p2.getHand().add(new Village());
+        p2.getInPlay().add(new Colony());
+        p2.getInPlay().add(new Talisman());
+
+        p2.playCard("Bank");
+
+        assertEquals(5,p2.getMoney());
+    }
 
 }
