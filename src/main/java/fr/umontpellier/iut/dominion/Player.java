@@ -405,6 +405,7 @@ public class Player{
         for (Card card: getCardsInInplay()) {
             if(card.getName().equals("Royal Seal")) draw.add(removeToInPlay(card));
             if(card.getName().equals("Grand Market")) incrementVictoryPoint(1);
+            if(card.getName().equals("Talisman")&& !c.getTypes().contains(CardType.Victory) && c.getCost() <= 4) discard.add(c);
         }
     }
 

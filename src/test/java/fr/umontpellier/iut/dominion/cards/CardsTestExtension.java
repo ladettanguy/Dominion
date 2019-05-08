@@ -233,5 +233,32 @@ class CardsTestExtension {
         assertTrue(p2.getHand().contains(c1));
     }
 
+    @Test
+    void testTalismanBuyAnColony() {
+        p2.getHand().add(new Talisman());
+        p2.incrementBuys(1);
+        p2.incrementMoney(10);
+        p2.playCard("Talisman");
+        p2.buyCard("Colony");
+
+
+        assertTrue(p2.getDiscard().get(0).getName().equals("Colony"));
+        assertEquals(1,p2.getDiscard().size());
+        assertEquals(0,p2.getMoney());
+    }
+
+    @Test
+    void testTalismanBuyAnCopper() {
+        p2.getHand().add(new Talisman());
+        p2.incrementBuys(1);
+        p2.playCard("Talisman");
+        p2.buyCard("Copper");
+
+
+        assertTrue(p2.getDiscard().get(0).getName().equals("Copper"));
+        assertTrue(p2.getDiscard().get(1).getName().equals("Copper"));
+        assertEquals(1,p2.getMoney());
+    }
+
 
 }
