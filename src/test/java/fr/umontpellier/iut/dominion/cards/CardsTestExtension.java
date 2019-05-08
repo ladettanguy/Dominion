@@ -257,6 +257,7 @@ class CardsTestExtension {
 
         assertTrue(p2.getDiscard().get(0).getName().equals("Copper"));
         assertTrue(p2.getDiscard().get(1).getName().equals("Copper"));
+        assertEquals(2,p2.getDiscard().size());
         assertEquals(1,p2.getMoney());
     }
 
