@@ -403,9 +403,8 @@ public class Player{
     public void gain(Card c) {
         if (c != null) discard.add(c);
         for (Card card: getCardsInInplay()) {
-            if(card.getName().equals("Royal Seal")){
-                draw.add(removeToInPlay(card));
-            }
+            if(card.getName().equals("Royal Seal")) draw.add(removeToInPlay(card));
+            if(card.getName().equals("Grand Market")) incrementVictoryPoint(1);
         }
     }
 
