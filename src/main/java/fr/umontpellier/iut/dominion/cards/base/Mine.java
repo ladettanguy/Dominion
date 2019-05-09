@@ -38,10 +38,4 @@ public class Mine extends Action {
         p.addToHand(p.getGame().removeFromSupply(choix));
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
-    }
 }

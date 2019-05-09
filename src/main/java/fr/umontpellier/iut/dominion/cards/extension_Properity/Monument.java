@@ -23,12 +23,4 @@ public class Monument extends Action {
         p.incrementVictoryPoint(1);
         p.incrementMoney(2);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
-    }
-
 }

@@ -28,10 +28,4 @@ public class Gardens extends Victory {
         return list.size()/10;
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Victory);
-        return list;
-    }
 }

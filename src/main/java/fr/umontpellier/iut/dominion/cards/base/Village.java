@@ -25,10 +25,4 @@ public class Village extends Action {
         p.incrementActions(2);
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
-    }
 }

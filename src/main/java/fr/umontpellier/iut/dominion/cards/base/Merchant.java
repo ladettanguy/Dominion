@@ -26,11 +26,4 @@ public class Merchant extends Action {
         p.setHasMerchantEffect(1);
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        list.add(CardType.Attack);
-        return list;
-    }
 }

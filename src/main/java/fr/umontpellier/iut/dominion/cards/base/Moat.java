@@ -20,14 +20,6 @@ public class Moat extends ActionReaction {
     }
 
     @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        list.add(CardType.Reaction);
-        return list;
-    }
-
-    @Override
     public void play(Player p) {
         p.drawToHand();
         p.drawToHand();

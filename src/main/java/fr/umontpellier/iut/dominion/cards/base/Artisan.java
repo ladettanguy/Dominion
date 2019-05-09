@@ -21,13 +21,6 @@ public class Artisan extends Action {
     }
 
     @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
-    }
-
-    @Override
     public void play(Player p) {
         ListOfCards supply = p.getGame().availableSupplyCards();
         ListOfCards supplyInferior5 = new ListOfCards();

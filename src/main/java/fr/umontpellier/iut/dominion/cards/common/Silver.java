@@ -26,11 +26,4 @@ public class Silver extends Treasure {
         }
         p.incrementMoney(2);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Treasure);
-        return list;
-    }
 }

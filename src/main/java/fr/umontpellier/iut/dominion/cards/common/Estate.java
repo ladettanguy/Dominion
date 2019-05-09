@@ -21,11 +21,4 @@ public class Estate extends Victory {
     public int getVictoryValue(Player p){
         return 1;
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Victory);
-        return list;
-    }
 }

@@ -22,10 +22,4 @@ public class Copper extends Treasure {
         p.incrementMoney(1);
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Treasure);
-        return list;
-    }
 }

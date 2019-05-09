@@ -23,10 +23,4 @@ public class Gold extends Treasure {
         p.incrementMoney(3);
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Treasure);
-        return list;
-    }
 }

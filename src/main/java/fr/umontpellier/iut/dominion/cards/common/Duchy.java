@@ -23,10 +23,4 @@ public class Duchy extends Victory {
         return 3;
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Victory);
-        return list;
-    }
 }

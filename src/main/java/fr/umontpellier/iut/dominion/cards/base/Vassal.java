@@ -37,10 +37,4 @@ public class Vassal extends Action {
         else p.discardCard(c);
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
-    }
 }

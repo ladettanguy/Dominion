@@ -48,12 +48,4 @@ public class Bandit extends ActionAttack {
             p.cancelProtect();
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        list.add(CardType.Attack);
-        return list;
-    }
 }

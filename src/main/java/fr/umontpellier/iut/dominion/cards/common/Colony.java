@@ -23,12 +23,4 @@ public class Colony extends Victory {
         return 10;
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Victory);
-        return list;
-    }
-
-
 }

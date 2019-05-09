@@ -25,11 +25,4 @@ public class Smithy extends Action {
         }
     }
 
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
-    }
 }

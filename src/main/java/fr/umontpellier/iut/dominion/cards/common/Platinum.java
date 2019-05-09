@@ -21,10 +21,4 @@ public class Platinum extends Victory {
        p.incrementMoney(5);
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Treasure);
-        return list;
-    }
 }

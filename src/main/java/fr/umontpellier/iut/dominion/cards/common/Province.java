@@ -21,13 +21,4 @@ public class Province extends Victory {
     public int getVictoryValue(Player p){
         return 6;
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Victory);
-        return list;
-    }
-
-
 }

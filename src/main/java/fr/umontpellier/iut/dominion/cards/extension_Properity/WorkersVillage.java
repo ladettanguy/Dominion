@@ -18,11 +18,4 @@ public class WorkersVillage extends Action {
         p.incrementBuys(1);
         p.drawToHand();
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> list = new ArrayList<>();
-        list.add(CardType.Action);
-        return list;
-    }
 }
