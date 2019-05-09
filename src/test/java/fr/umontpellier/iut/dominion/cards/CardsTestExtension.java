@@ -420,4 +420,68 @@ class CardsTestExtension {
         assertEquals(5,p2.getDraw().size());
     }
 
+    @Test
+    void testCountinghousePass() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getDraw().remove(0); //vide la draw
+
+        //remet des carte en main
+        p2.getHand().add(new Countinghouse());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+
+        game.setInput("");
+
+        p2.playCard("Counting House");
+
+        assertNotNull(p2.getDiscard().getCard("Copper"));
+        assertEquals(5,p2.getDiscard().size());
+        assertNull(p2.getDraw().getCard("Copper"));
+        assertEquals(0,p2.getDraw().size());
+    }
+
+    @Test
+    void testMint() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getDraw().remove(0); //vide la draw
+
+        //remet des carte en main
+        p2.getHand().add(new Mint());
+        p2.getHand().add(new Gold());
+
+
+        game.setInput("Gold");
+
+        p2.playCard("Mint");
+
+        assertTrue(p2.getHand().get(0).getName().equals("Gold"));
+        assertTrue(p2.getHand().get(1).getName().equals("Gold"));
+        assertEquals(2,p2.getHand().size());
+    }
+
+    @Test
+    void testMintPass() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getDraw().remove(0); //vide la draw
+
+        //remet des carte en main
+        p2.getHand().add(new Mint());
+        p2.getHand().add(new Gold());
+
+        game.setInput("");
+
+        p2.playCard("Mint");
+
+        assertTrue(p2.getHand().get(0).getName().equals("Gold"));
+        assertEquals(1,p2.getHand().size());
+    }
 }

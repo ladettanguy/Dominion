@@ -482,16 +482,24 @@ public class Player{
                 Card card = gainFromSupply(cardName);
                 incrementMoney(-c.getCost()+2);
                 numberOfBuys -= 1;
+                if(c.getName().equals("Mint")) clearInPlayAllTreasure();
                 return card;
             }
             if (money >= c.getCost()){
                 Card card = gainFromSupply(cardName);
                 incrementMoney(-card.getCost());
                 numberOfBuys -= 1;
+                if(c.getName().equals("Mint")) clearInPlayAllTreasure();
                 return card;
             }
         }
         return null;
+    }
+
+    public void clearInPlayAllTreasure(){
+        for (Card c: getCardsInHand()) {
+            if(c.getTypes().contains(CardType.Treasure)) inPlay.remove(c);
+        }
     }
 
     public  Card removeToInPlay (Card c){
