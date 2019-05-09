@@ -26,12 +26,23 @@ public class Bandit extends ActionAttack {
         List<Player> list = p.getGame().otherPlayers(p);
         for (Player pla : list) {
             p.haveMoat();
-            if(!p.isProtected()){
-                boolean aDiscard = false;
-                for (int i = 0; i < 2; i++) {
-                    Card c = pla.removeToDraw(0);
-                    if (c.getTypes().contains(CardType.Treasure) && !c.getName().equals("Copper") && !aDiscard){aDiscard = true;}
-                    else  pla.discardCard(c);
+            if(!p.isProtected()) {
+                Card c1 = pla.drawCard();
+                Card c2 = pla.drawCard();
+                ListOfCards aTrash = new ListOfCards();
+                ListOfCards pioche = new ListOfCards();
+                if (c1 != null && !c1.getName().equals("Copper") && c1.getTypes().contains(CardType.Treasure))
+                    aTrash.add(c1);
+                else p.discardCard(c1);
+                if (c2 != null && !c2.getName().equals("Copper") && c2.getTypes().contains(CardType.Treasure))
+                    aTrash.add(c2);
+                else p.discardCard(c2);
+                pioche.add(c1);
+                pioche.add(c2);
+                String s = p.chooseCard("Choisissez une carte a trash entre les deux " + aTrash.toString(), aTrash, false);
+                if (!s.equals("")) {
+                    pioche.remove(aTrash.getCard(s));
+                    pla.discardCard(pioche.get(0));
                 }
             }
             p.cancelProtect();
