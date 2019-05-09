@@ -33,6 +33,7 @@ public class Player{
 
     private boolean protectByMoat;
 
+    private boolean quarryOn;
     /**
      * Compteur de Point de Victoire
      */
@@ -86,6 +87,7 @@ public class Player{
         victoryPoint = 0;
         hasMerchantEffect =0;
         protectByMoat = false;
+        quarryOn = false;
         for (int i = 0; i < 7; i++) {
             discard.add(new Copper());
         }
@@ -106,6 +108,10 @@ public class Player{
     public void setHasMerchantEffect(int hasMerchantEffect) { this.hasMerchantEffect += hasMerchantEffect;}
 
     public int isHasMerchantEffect() { return hasMerchantEffect; }
+
+    public boolean isQuarryOn() { return quarryOn; }
+
+    public void setQuarryOn(boolean quarryOn) { this.quarryOn = quarryOn; }
 
     public String getName() {
         return name;
@@ -428,7 +434,7 @@ public class Player{
         }
         for (Card card: getCardsInHand()) {
             if(card.getName().equals("Watchtower")) {
-                ArrayList<String> list = new ArrayList<String>();
+                ArrayList<String> list = new ArrayList<>();
                 list.add("Trash");list.add("Draw");
                 String s = chooseOption("Voulez vous \"Trash\" ou mettre la carte au dessus du \"Draw\" ou passe \"\"",list,true);
                 if(s.equals("Trash")) removeToDiscard(c);
@@ -472,6 +478,12 @@ public class Player{
     public Card buyCard(String cardName) {
         if(numberOfBuys > 0) {
             Card c = game.getFromSupply(cardName);
+            if(quarryOn && c.getTypes().contains(CardType.Action) && money >= c.getCost()-2){
+                Card card = gainFromSupply(cardName);
+                incrementMoney(-c.getCost()+2);
+                numberOfBuys -= 1;
+                return card;
+            }
             if (money >= c.getCost()){
                 Card card = gainFromSupply(cardName);
                 incrementMoney(-card.getCost());
@@ -677,6 +689,7 @@ public class Player{
         discard.addAll(inPlay);
         hand = new ListOfCards();
         inPlay = new ListOfCards();
+        setQuarryOn(false);
         for (int i = 0; i < 5; i++) {
             this.drawToHand();
         }

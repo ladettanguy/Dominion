@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards;
 
 import fr.umontpellier.iut.dominion.IOGame;
+import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
@@ -348,6 +349,50 @@ class CardsTestExtension {
         p2.buyCard("Copper");
 
         assertNotNull(p2.getDiscard().getCard("Copper"));
+    }
+
+    @Test
+    void testQuarry() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //remet des carte en main
+
+        p2.getHand().add(new Quarry());
+        ListOfCards list = new ListOfCards();
+        for (int i = 0; i < 10; i++) {
+            list.add(new Village());
+        }
+        game.addSupplyStacks(list);
+
+        p2.playCard("Quarry");
+
+        p2.incrementBuys(1);
+
+        p2.buyCard("Village");
+
+        assertNotNull(p2.getDiscard().getCard("Village"));
+    }
+
+    @Test
+    void testQuarryCantBuy() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //remet des carte en main
+
+        p2.getHand().add(new Quarry());
+        ListOfCards list = new ListOfCards();
+        for (int i = 0; i < 10; i++) {
+            list.add(new ThroneRoom());
+        }
+        game.addSupplyStacks(list);
+
+        p2.playCard("Quarry");
+
+        p2.incrementBuys(1);
+
+        p2.buyCard("Throne Room");
+
+        assertNull(p2.getDiscard().getCard("Throne Room"));
     }
 
 }

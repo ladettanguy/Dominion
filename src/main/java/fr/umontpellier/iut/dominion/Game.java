@@ -157,6 +157,10 @@ public class Game{
         return list;
     }
 
+    public void addSupplyStacks(ListOfCards stacks) {
+        supplyStacks.add(stacks);
+    }
+
     /**
      * Renvoie une représentation de l'état de la partie sous forme d'une chaîne
      * de caractères.
