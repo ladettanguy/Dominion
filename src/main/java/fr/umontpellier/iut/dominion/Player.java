@@ -4,6 +4,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Copper;
 import fr.umontpellier.iut.dominion.cards.common.Estate;
 import fr.umontpellier.iut.dominion.cards.FactoryListOfCards;
+import fr.umontpellier.iut.dominion.cards.common.Gold;
 
 import java.util.*;
 
@@ -478,6 +479,9 @@ public class Player{
     public Card buyCard(String cardName) {
         if(numberOfBuys > 0) {
             Card c = game.getFromSupply(cardName);
+            for (Card card: getCardsInInplay()) {
+                if(card.getName().equals("Hoard") && c.getTypes().contains(CardType.Victory)) gain(new Gold());
+            }
             if(quarryOn && c.getTypes().contains(CardType.Action) && money >= c.getCost()-2){
                 Card card = gainFromSupply(cardName);
                 incrementMoney(-c.getCost()+2);

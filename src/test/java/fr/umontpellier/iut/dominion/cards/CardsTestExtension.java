@@ -484,4 +484,22 @@ class CardsTestExtension {
         assertTrue(p2.getHand().get(0).getName().equals("Gold"));
         assertEquals(1,p2.getHand().size());
     }
+
+    @Test
+    void testHoard() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getDraw().remove(0); //vide la draw
+
+        //remet des carte en main
+        p2.getHand().add(new Hoard());
+        p2.incrementBuys(1);
+
+        p2.playCard("Hoard");
+        p2.buyCard("Estate");
+
+        assertNotNull(p2.getDiscard().getCard("Gold"));
+        assertEquals(0,p2.getMoney());
+    }
 }
