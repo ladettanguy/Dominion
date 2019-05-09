@@ -395,4 +395,29 @@ class CardsTestExtension {
         assertNull(p2.getDiscard().getCard("Throne Room"));
     }
 
+    @Test
+    void testCountinghouse() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getDraw().remove(0); //vide la draw
+
+        //remet des carte en main
+        p2.getHand().add(new Countinghouse());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+        p2.getDiscard().add(new Copper());
+
+        game.setInput("6","5");
+
+        p2.playCard("Counting House");
+
+        assertNull(p2.getDiscard().getCard("Copper"));
+        assertEquals(0,p2.getDiscard().size());
+        assertNotNull(p2.getDraw().getCard("Copper"));
+        assertEquals(5,p2.getDraw().size());
+    }
+
 }
