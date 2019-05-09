@@ -279,4 +279,75 @@ class CardsTestExtension {
         assertEquals(5,p2.getMoney());
     }
 
+    @Test
+    void testWatchtower() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //remet des carte en main
+        p2.getHand().add(new Watchtower());
+        p2.getDraw().add(new Copper());
+        p2.getDraw().add(new Silver());
+        p2.getDraw().add(new Gold());
+        p2.getDraw().add(new Village());
+        p2.getDraw().add(new Colony());
+        p2.getDraw().add(new Talisman());
+
+        p2.playCard("Watchtower");
+
+        assertEquals(6,p2.getHand().size());
+    }
+
+    @Test
+    void testWatchtowerReactionDraw() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //remet des carte en main
+
+        p2.getHand().add(new Watchtower());
+        p2.incrementBuys(1);
+
+
+        game.setInput("Draw");
+
+        p2.buyCard("Copper");
+
+        assertNull(p2.getDiscard().getCard("Copper"));
+        assertTrue(p2.getDraw().get(0).getName().equals("Copper"));
+    }
+
+    @Test
+    void testWatchtowerReactionTrash() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //remet des carte en main
+
+        p2.getHand().add(new Watchtower());
+        p2.incrementBuys(1);
+
+
+        game.setInput("Trash");
+
+        p2.buyCard("Copper");
+
+        assertNull(p2.getDiscard().getCard("Copper"));
+        assertFalse(p2.getDraw().get(0).getName().equals("Copper"));
+    }
+
+    @Test
+    void testWatchtowerReactionPass() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //remet des carte en main
+
+        p2.getHand().add(new Watchtower());
+        p2.incrementBuys(1);
+
+
+        game.setInput("");
+
+        p2.buyCard("Copper");
+
+        assertNotNull(p2.getDiscard().getCard("Copper"));
+    }
+
 }

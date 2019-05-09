@@ -103,7 +103,6 @@ public class Player{
      * Getters et setters
      */
 
-
     public void setHasMerchantEffect(int hasMerchantEffect) { this.hasMerchantEffect += hasMerchantEffect;}
 
     public int isHasMerchantEffect() { return hasMerchantEffect; }
@@ -426,6 +425,15 @@ public class Player{
             if(card.getName().equals("Royal Seal")) draw.add(removeToInPlay(card));
             if(card.getName().equals("Grand Market")) incrementVictoryPoint(1);
             if(card.getName().equals("Talisman")&& !c.getTypes().contains(CardType.Victory) && c.getCost() <= 4) discard.add(c);
+        }
+        for (Card card: getCardsInHand()) {
+            if(card.getName().equals("Watchtower")) {
+                ArrayList<String> list = new ArrayList<String>();
+                list.add("Trash");list.add("Draw");
+                String s = chooseOption("Voulez vous \"Trash\" ou mettre la carte au dessus du \"Draw\" ou passe \"\"",list,true);
+                if(s.equals("Trash")) removeToDiscard(c);
+                if(s.equals("Draw")) addToDraw(removeToDiscard(c));
+            }
         }
     }
 
