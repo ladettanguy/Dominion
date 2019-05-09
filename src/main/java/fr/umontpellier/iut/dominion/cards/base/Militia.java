@@ -20,27 +20,20 @@ public class Militia extends ActionAttack {
         super("Militia", 4);
     }
 
-    private void doDiscard (Player opponentPlayer ,ListOfCards opponentHand){
-        while (opponentHand.size() > 3){
-            String s = opponentPlayer.chooseCard("Choissiez une carte à défaussé. restant: " + (opponentHand.size()-3),opponentHand,false);
-            opponentPlayer.discardCard(opponentHand.getCard(s));
-            opponentPlayer.removeToHand(s);
-        }
-    }
-
     @Override
     public void play(Player p) {
         p.incrementMoney(2);
         List<Player> listPlayer = p.getGame().otherPlayers(p);
         for (Player pla : listPlayer) {
-            ListOfCards list1 = pla.getHand();
-            for (Card c : list1) {
-                if (c.getTypes().contains(CardType.Reaction)) {
-                    if (c.react(pla)) break;
-                    else doDiscard(pla, list1);
+            pla.haveMoat();
+            if(!pla.isProtected()){
+                ListOfCards list1 = pla.getHand();
+                while (list1.size() > 3){
+                    String s = pla.chooseCard("Choissiez une carte à défaussé. restant: " + (list1.size()-3),list1,false);
+                    pla.discardCard(list1.getCard(s));
+                    pla.removeToHand(s);
                 }
             }
-            doDiscard(pla, list1);
         }
     }
 

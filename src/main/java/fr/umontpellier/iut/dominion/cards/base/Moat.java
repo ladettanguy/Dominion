@@ -32,13 +32,4 @@ public class Moat extends ActionReaction {
         p.drawToHand();
         p.drawToHand();
     }
-
-    @Override
-    public boolean react(Player p) {
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("y");list.add("n");
-        String s = p.chooseOption("Voulez vous réagir a une carte ATTACK avec Moat ?",list,false);
-        if (s.equals("y"))return true;
-        else return false;
-    }
 }

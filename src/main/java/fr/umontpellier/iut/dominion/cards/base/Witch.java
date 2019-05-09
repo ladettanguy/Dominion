@@ -26,15 +26,9 @@ public class Witch extends ActionAttack {
         p.drawToHand();
         List<Player> list = p.getGame().otherPlayers(p);
         for (Player pla : list) {
-            boolean react = false;
-            ListOfCards list1 = pla.getHand();
-            for (Card c : list1){
-                if (c.getTypes().contains(CardType.Reaction)){
-                    react = c.react(pla);
-
-                }
-            }
-            if(!react)pla.gainFromSupply("Curse");
+            pla.haveMoat();
+            if(!pla.isProtected())pla.gainFromSupply("Curse");
+            pla.cancelProtect();
         }
     }
 

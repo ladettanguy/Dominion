@@ -23,17 +23,10 @@ public class Bandit extends ActionAttack {
     @Override
     public void play(Player p) {
         p.gainFromSupply("Gold");
-
         List<Player> list = p.getGame().otherPlayers(p);
         for (Player pla : list) {
-            boolean r = false;
-            ListOfCards list4 = pla.getCardsInHand();
-            for (Card c : list4){
-                if (c.getTypes().contains(CardType.Reaction)){
-                    r = c.react(pla);
-                }
-            }
-            if(!r){
+            p.haveMoat();
+            if(!p.isProtected()){
                 boolean aDiscard = false;
                 for (int i = 0; i < 2; i++) {
                     Card c = pla.removeToDraw(0);
@@ -41,6 +34,7 @@ public class Bandit extends ActionAttack {
                     else  pla.discardCard(c);
                 }
             }
+            p.cancelProtect();
         }
     }
 

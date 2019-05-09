@@ -31,6 +31,8 @@ public class Player{
      */
     private int money;
 
+    private boolean protectByMoat;
+
     /**
      * Compteur de Point de Victoire
      */
@@ -83,6 +85,7 @@ public class Player{
         draw = new ListOfCards();
         victoryPoint = 0;
         hasMerchantEffect =0;
+        protectByMoat = false;
         for (int i = 0; i < 7; i++) {
             discard.add(new Copper());
         }
@@ -94,20 +97,24 @@ public class Player{
         endTurn();
     }
 
-    public void setHasMerchantEffect(int hasMerchantEffect) {
-        this.hasMerchantEffect += hasMerchantEffect;
-    }
 
-    public int isHasMerchantEffect() {
-        return hasMerchantEffect;
-    }
 
     /**
      * Getters et setters
      */
+
+
+    public void setHasMerchantEffect(int hasMerchantEffect) { this.hasMerchantEffect += hasMerchantEffect;}
+
+    public int isHasMerchantEffect() { return hasMerchantEffect; }
+
     public String getName() {
         return name;
     }
+
+    public boolean isProtected(){return protectByMoat;}
+
+    public void cancelProtect(){protectByMoat = false;}
 
     public int getMoney() {
         return money;
@@ -243,6 +250,19 @@ public class Player{
      */
     public void incrementBuys(int n) {
         numberOfBuys += n;
+    }
+
+    public void haveMoat(){
+        for (Card c: hand) {
+            if(c.getName().equals("Moat")) {
+                ArrayList<String> list = new ArrayList<String>();
+                list.add("y");list.add("n");
+                String s = chooseOption("Voullez vous jouer Moat ?",list, false);
+                if(s.equals("y")){
+                    protectByMoat = true;
+                }
+            }
+        }
     }
 
     /**
