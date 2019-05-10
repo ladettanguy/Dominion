@@ -27,10 +27,10 @@ public class Militia extends ActionAttack {
         for (Player pla : listPlayer) {
             pla.haveMoat();
             if(!pla.isProtected()){
-                ListOfCards list1 = pla.getHand();
+                ListOfCards list1 = pla.getCardsInHand();
                 while (list1.size() > 3){
                     String s = pla.chooseCard("Choissiez une carte à défaussé. restant: " + (list1.size()-3),list1,false);
-                    pla.discardCard(list1.getCard(s));
+                    pla.discardCard(list1.remove(s));
                     pla.removeToHand(s);
                 }
             }

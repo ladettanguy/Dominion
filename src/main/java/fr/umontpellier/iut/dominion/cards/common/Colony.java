@@ -19,8 +19,8 @@ public class Colony extends Victory {
     public Colony() {
         super("Colony", 11);
     }
+
     public int getVictoryValue(Player p){
         return 10;
     }
-
 }

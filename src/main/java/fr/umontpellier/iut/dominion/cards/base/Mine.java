@@ -22,7 +22,7 @@ public class Mine extends Action {
 
     @Override
     public void play(Player p) {
-        ListOfCards list = p.getHand();
+        ListOfCards list = p.getCardsInHand();
         ListOfCards treasure = new ListOfCards();
         for (Card c: list) {
             if (c.getTypes().contains(CardType.Treasure)) treasure.add(c);

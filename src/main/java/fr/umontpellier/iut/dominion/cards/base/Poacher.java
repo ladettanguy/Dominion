@@ -34,7 +34,7 @@ public class Poacher extends Action {
         }
         for (int i = 0; i < nbEmptyStacks; i++) {
             String chooseHand = p.chooseCard("Choissisez une carte de votre main à déffausée", p.getCardsInHand(), false);
-            p.discardCard(p.getHand().getCard(chooseHand));
+            p.discardCard(p.getCardsInHand().getCard(chooseHand));
             p.removeToHand(chooseHand);
         }
     }

@@ -26,9 +26,9 @@ public class Harbinger extends Action {
         p.incrementActions(1);
         p.drawToHand();
 
-        ListOfCards discard = p.getDiscard();
-        String choose = p.chooseCard("Choissisez une carte de votre défausse", discard, !discard.isEmpty());
-        Card c = p.getDiscard().getCard(choose);
+        ListOfCards discard = p.getCardsInDiscard();
+        String s = p.chooseCard("Choissisez une carte de votre défausse", discard, !discard.isEmpty());
+        Card c = discard.getCard(s);
         p.addToDraw(c);
         p.removeToDiscard(c);
 

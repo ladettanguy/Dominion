@@ -16,7 +16,7 @@ public class Countinghouse extends Action {
     @Override
     public void play(Player p) {
         int countCopper= 0;
-        for (Card c: p.getDiscard()) {
+        for (Card c: p.getCardsInDiscard()) {
             if(c.getName().equals("Copper")) countCopper++;
         }
         ArrayList<String> list = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Countinghouse extends Action {
             int number = Integer.parseInt(s);
             ListOfCards listCopper = new ListOfCards();
             for (int i = 0; i < number; i++) {
-                listCopper.add(p.getDiscard().remove("Copper"));
+                listCopper.add(p.removeToDiscard(p.getCardsInDiscard().getCard("Copper")));
             }
             p.getDraw().addAll(0,listCopper);
         }

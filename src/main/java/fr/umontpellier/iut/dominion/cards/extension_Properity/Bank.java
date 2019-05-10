@@ -13,7 +13,7 @@ public class Bank extends Treasure {
     @Override
     public void play(Player p) {
         int numberOfTreasure = 0;
-        for (Card c: p.getInPlay()) if(c.getTypes().contains(CardType.Treasure))numberOfTreasure++;
+        for (Card c: p.getCardsInInplay()) if(c.getTypes().contains(CardType.Treasure))numberOfTreasure++;
         //je me permet de faire ça car la phase "Trésor" joue automatiquement toute les trésors.
         for (Card c: p.getCardsInHand()) if(c.getTypes().contains(CardType.Treasure))numberOfTreasure++;
         p.incrementMoney(numberOfTreasure);

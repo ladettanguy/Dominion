@@ -34,9 +34,9 @@ public class Artisan extends Action {
         Card ca = p.getGame().removeFromSupply(choose);
         p.addToHand(ca);
 
-        ListOfCards hand = p.getHand();
+        ListOfCards hand = p.getCardsInHand();
         String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, !hand.isEmpty());
-        Card c = p.getHand().getCard(chooseHand);
+        Card c = hand.getCard(chooseHand);
         p.addToDraw(c);
         p.removeToHand(chooseHand);
     }

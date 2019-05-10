@@ -34,7 +34,7 @@ public class Bureaucrat extends ActionAttack {
                     if(c.getTypes().contains(CardType.Victory)) victory.add(c);
                 }
                 String s = pla.chooseCard("choisissez une card victoire a dévoilé et a mettre sur votre deck",victory,false);
-                pla.addToDraw(pla.getHand().remove(s));
+                pla.addToDraw(pla.removeToHand(s));
             }
         }
 

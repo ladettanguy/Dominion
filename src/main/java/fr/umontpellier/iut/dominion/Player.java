@@ -100,6 +100,17 @@ public class Player{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Getters et setters
      */
@@ -155,6 +166,8 @@ public class Player{
      * La liste renvoyée doit être une nouvelle {@code ListOfCards} dont les
      * éléments sont les mêmes que ceux de {@code hand}.
      */
+    public ListOfCards getCardsInDiscard(){return new ListOfCards(discard);}
+
     public ListOfCards getCardsInHand() {
         return new ListOfCards(hand);
     }

@@ -12,7 +12,7 @@ public abstract class ActionPlaySeveralTimes extends Action {
     }
 
     public void play(Player p, int nombreDePlay) {
-        ListOfCards list = p.getHand();
+        ListOfCards list = p.getCardsInHand();
         ListOfCards jouable = new ListOfCards();
         for (Card c: list)
             if (c.getTypes().contains(CardType.Action))jouable.add(c);

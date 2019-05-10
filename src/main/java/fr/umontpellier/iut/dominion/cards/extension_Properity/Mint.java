@@ -18,6 +18,6 @@ public class Mint extends Action {
             if(c.getTypes().contains(CardType.Treasure)) list.add(c);
         }
         String s = p.chooseCard("Vous pouvez choisir de révélé une carte trésor pour gagné une copy",list,true);
-        if(!s.equals(""))p.addToHand(p.getHand().getCard(s));
+        if(!s.equals(""))p.addToHand(p.getCardsInHand().getCard(s));
     }
 }
