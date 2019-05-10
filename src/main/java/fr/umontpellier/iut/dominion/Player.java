@@ -33,8 +33,6 @@ public class Player{
     private int money;
 
     private boolean protectByMoat;
-
-    private boolean quarryOn;
     /**
      * Compteur de Point de Victoire
      */
@@ -88,7 +86,6 @@ public class Player{
         victoryPoint = 0;
         hasMerchantEffect =0;
         protectByMoat = false;
-        quarryOn = false;
         for (int i = 0; i < 7; i++) {
             discard.add(new Copper());
         }
@@ -109,10 +106,6 @@ public class Player{
     public void setHasMerchantEffect(int hasMerchantEffect) { this.hasMerchantEffect += hasMerchantEffect;}
 
     public int isHasMerchantEffect() { return hasMerchantEffect; }
-
-    public boolean isQuarryOn() { return quarryOn; }
-
-    public void setQuarryOn(boolean quarryOn) { this.quarryOn = quarryOn; }
 
     public String getName() {
         return name;
@@ -205,9 +198,7 @@ public class Player{
     public int getVictoryPoints() {
         int vict = 0;
         ListOfCards list = this.getAllCards();
-        for (Card c: list) {
-            vict += c.getVictoryValue(this);
-        }
+        for (Card c: list) vict += c.getVictoryValue(this);
         return vict + victoryPoint;
     }
 
@@ -264,9 +255,7 @@ public class Player{
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("y");list.add("n");
                 String s = chooseOption("Voullez vous jouer Moat ?",list, false);
-                if(s.equals("y")){
-                    protectByMoat = true;
-                }
+                if(s.equals("y")) protectByMoat = true;
             }
         }
     }
@@ -282,16 +271,12 @@ public class Player{
      * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawCard() {
-        if (!draw.isEmpty()){
-            return draw.remove(0);
-        }
+        if (!draw.isEmpty()) return draw.remove(0);
         else {
             discard.shuffle();
             draw = discard;
             discard = new ListOfCards();
-            if (!draw.isEmpty()){
-                return draw.remove(0);
-            }
+            if (!draw.isEmpty()) return draw.remove(0);
         }
         return null;
     }
@@ -412,9 +397,7 @@ public class Player{
      */
     public void playCard(String cardName) {
         Card c = hand.getCard(cardName);
-        if (c != null){
-            this.playCard(c);
-        }
+        if (c != null) this.playCard(c);
     }
 
     /**
@@ -433,15 +416,14 @@ public class Player{
             if(card.getName().equals("Grand Market")) incrementVictoryPoint(1);
             if(card.getName().equals("Talisman")&& !c.getTypes().contains(CardType.Victory) && c.getCost() <= 4) discard.add(c);
         }
-        for (Card card: getCardsInHand()) {
-            if(card.getName().equals("Watchtower")) {
-                ArrayList<String> list = new ArrayList<>();
-                list.add("Trash");list.add("Draw");
-                String s = chooseOption("Voulez vous \"Trash\" ou mettre la carte au dessus du \"Draw\" ou passe \"\"",list,true);
-                if(s.equals("Trash")) removeToDiscard(c);
-                if(s.equals("Draw")) addToDraw(removeToDiscard(c));
-            }
+        if(hand.contains(hand.getCard("Watchtower"))) {
+            ArrayList<String> list = new ArrayList<>();
+            list.add("Trash");list.add("Draw");
+            String s = chooseOption("Voulez vous \"Trash\" ou mettre la carte au dessus du \"Draw\" ou passe \"\"",list,true);
+            if(s.equals("Trash")) removeToDiscard(c);
+            if(s.equals("Draw")) addToDraw(removeToDiscard(c));
         }
+
     }
 
     /**
@@ -479,55 +461,37 @@ public class Player{
     public Card buyCard(String cardName) {
         if(numberOfBuys > 0) {
             Card c = game.getFromSupply(cardName);
-            for (Card card: getCardsInInplay()) {
+            int cost = c.getCost();
+            for (Card card: inPlay) {
+                if(card.getName().equals("Quarry") && c.getTypes(). contains(CardType.Action)) cost -=2;
+                if(cardName.equals("Peddler") && card.getTypes().contains(CardType.Action)) cost -=2;
                 if(card.getName().equals("Hoard") && c.getTypes().contains(CardType.Victory)) gain(new Gold());
             }
-            if(quarryOn && c.getTypes().contains(CardType.Action) && money >= c.getCost()-2){
+            if(cost < 0) cost = 0;
+            if(money >= cost) {
                 Card card = gainFromSupply(cardName);
-                incrementMoney(-c.getCost()+2);
+                incrementMoney(-cost);
                 numberOfBuys -= 1;
-                if(c.getName().equals("Mint")) clearInPlayAllTreasure();
+                if (cardName.equals("Mint")) clearInPlayAllTreasure();
                 return card;
             }
-            if (money >= c.getCost()){
-                Card card = gainFromSupply(cardName);
-                incrementMoney(-card.getCost());
-                numberOfBuys -= 1;
-                if(c.getName().equals("Mint")) clearInPlayAllTreasure();
-                return card;
-            }
+            return null;
         }
         return null;
     }
 
-    public void clearInPlayAllTreasure(){
-        for (Card c: getCardsInHand()) {
-            if(c.getTypes().contains(CardType.Treasure)) inPlay.remove(c);
-        }
+    private void clearInPlayAllTreasure(){
+        for (Card c: getCardsInHand()) if(c.getTypes().contains(CardType.Treasure)) inPlay.remove(c);
     }
 
     public  Card removeToInPlay (Card c){
-        if (c != null){
-            inPlay.remove(c);
-        }
+        if (c != null) inPlay.remove(c);
         return c;
-    }
-
-    public  Card removeToInPlay (String cardName){
-        Card c = inPlay.getCard(cardName);
-        return removeToInPlay(c);
     }
 
     public Card removeToDiscard (Card c){
-        if (c != null){
-            discard.remove(c);
-        }
+        if (c != null) discard.remove(c);
         return c;
-    }
-
-    public Card removeToDiscard (String cardName){
-        Card c = discard.getCard(cardName);
-        return removeToDiscard(c);
     }
 
     public int getCountOfPoints() {
@@ -701,10 +665,7 @@ public class Player{
         discard.addAll(inPlay);
         hand = new ListOfCards();
         inPlay = new ListOfCards();
-        setQuarryOn(false);
-        for (int i = 0; i < 5; i++) {
-            this.drawToHand();
-        }
+        for (int i = 0; i < 5; i++) this.drawToHand();
     }
 
     /**

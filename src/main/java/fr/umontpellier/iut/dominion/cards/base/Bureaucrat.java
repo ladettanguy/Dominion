@@ -6,6 +6,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 import fr.umontpellier.iut.dominion.cards.type.Action;
+import fr.umontpellier.iut.dominion.cards.type.ActionAttack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,37 +18,25 @@ import java.util.List;
  * Tous vos adversaires dévoilent une carte Victoire et la placent sur leur deck (sinon ils dévoilent leur
  * main afin que vous puissiez voir qu'ils n'ont pas de cartes Victoire).
  */
-public class Bureaucrat extends Action {
+public class Bureaucrat extends ActionAttack {
     public Bureaucrat() {
         super("Bureaucrat", 4);
     }
 
     @Override
     public void play(Player p) {
-        ListOfCards listdecarte = p.getGame().availableSupplyCards();
-        Card silv = listdecarte.getCard("Silver");
-        p.addToDraw(silv);
-        List<Player> list = p.getGame().otherPlayers(p);
-        ListOfCards victory = new ListOfCards();
-        for (Player pla : list) {
-            ListOfCards list1 = pla.getHand();
-            for (Card c : list1){
-                if (c.getTypes().contains(CardType.Reaction)) if(c.react(pla)) break;
-                if (c.getTypes().contains(CardType.Victory)) victory.add(c);
-            }
-            if (!victory.isEmpty()){
-                String s = pla.chooseCard("choisissez une carte à dévoilé parmis les suivante", victory , false);
-                Card c = pla.removeToHand(s);
-                pla.addToDraw(c);
-                p.getGame().println("le joueur " + pla.getGame() + " à défausser " + s);
-            }
-            else {
-                p.getGame().print("le joueur " + pla.getGame() + " possède : ");
-                for (Card c : list1) {
-                    p.getGame().print(c.toString()+ " ");
+        p.addToDraw(p.getGame().removeFromSupply("Silver"));
+        for (Player pla : p.getOtherPlayers()) {
+            pla.haveMoat();
+            if(!pla.isProtected()){
+                ListOfCards victory = new ListOfCards();
+                for (Card c: pla.getCardsInHand()) {
+                    if(c.getTypes().contains(CardType.Victory)) victory.add(c);
                 }
-                p.getGame().print("\n");
+                String s = pla.chooseCard("choisissez une card victoire a dévoilé et a mettre sur votre deck",victory,false);
+                pla.addToDraw(pla.getHand().remove(s));
             }
         }
+
     }
 }

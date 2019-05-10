@@ -10,7 +10,7 @@ public class Watchtower extends ActionReaction {
 
     @Override
     public void play(Player p) {
-        while (p.getHand().size() < 6){
+        while (p.getCardsInHand().size() < 6){
             p.drawToHand();
         }
     }

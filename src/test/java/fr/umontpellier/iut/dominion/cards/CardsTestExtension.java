@@ -7,19 +7,17 @@ import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
 import fr.umontpellier.iut.dominion.cards.extension_Properity.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
 
-import static fr.umontpellier.iut.dominion.TestUtils.hasCards;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class CardsTestExtension {
     private IOGame game;
-    private Player p0, p1, p2;
+    private Player p0, p2;
 
     @BeforeEach
     void disableConsole() {
@@ -39,8 +37,7 @@ class CardsTestExtension {
         String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
         game = new IOGame(playerNames, new String[0]);
         p0 = game.getPlayer(0);
-        p1 = game.getPlayer(1);
-        p2 = game.getPlayer(2);
+        p2 = game.getPlayer(1);
     }
 
     @Test
@@ -321,6 +318,9 @@ class CardsTestExtension {
         //vide la main
         for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
         //remet des carte en main
+        //vide la main
+        for (int i = 0; i < 4; i++) p2.getDraw().remove(0); //vide la draw
+        //remet des carte en main
 
         p2.getHand().add(new Watchtower());
         p2.incrementBuys(1);
@@ -328,10 +328,11 @@ class CardsTestExtension {
 
         game.setInput("Trash");
 
-        p2.buyCard("Copper");
+        Card c = p2.buyCard("Copper");
 
         assertNull(p2.getDiscard().getCard("Copper"));
-        assertFalse(p2.getDraw().get(0).getName().equals("Copper"));
+        assertFalse(p2.getDraw().contains(c));
+        assertFalse(p2.getDraw().get(0).equals(c));
     }
 
     @Test
@@ -500,6 +501,47 @@ class CardsTestExtension {
         p2.buyCard("Estate");
 
         assertNotNull(p2.getDiscard().getCard("Gold"));
+        assertEquals(0,p2.getMoney());
+    }
+
+    @Test
+    void testPeddler() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+
+        //remet des carte en main
+        p2.getHand().add(new Peddler());
+
+        p2.playCard("Peddler");
+
+        assertEquals(1,p2.getMoney());
+        assertEquals(1,p2.getNumberOfActions());
+        assertEquals(1,p2.getHand().size());
+    }
+
+    @Test
+    void testPeddlerToBuy() {
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getHand().remove(0); //vide la main
+        //vide la main
+        for (int i = 0; i < 5; i++) p2.getDraw().remove(0); //vide la draw
+
+        ListOfCards list = new ListOfCards();
+        for (int i = 0; i < 10; i++) {
+            list.add(new Peddler());
+        }
+        game.addSupplyStacks(list);
+
+        //remet des carte en main
+        p2.getInPlay().add(new Village());
+        p2.getInPlay().add(new Village());
+        p2.getInPlay().add(new Quarry());
+        p2.incrementBuys(1);
+        p2.incrementMoney(2);
+
+        p2.buyCard("Peddler");
+
+        assertNotNull(p2.getDiscard().getCard("Peddler"));
         assertEquals(0,p2.getMoney());
     }
 }
