@@ -95,6 +95,7 @@ public class Player{
         this.name = name;
         this.game = game;
         endTurn();
+
     }
 
 
@@ -103,7 +104,7 @@ public class Player{
      * Getters et setters
      */
 
-    public void setHasMerchantEffect(int hasMerchantEffect) { this.hasMerchantEffect += hasMerchantEffect;}
+    public void incrementHasMerchantEffect(int hasMerchantEffect) { this.hasMerchantEffect += hasMerchantEffect;}
 
     public int isHasMerchantEffect() { return hasMerchantEffect; }
 

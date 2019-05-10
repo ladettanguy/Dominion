@@ -21,8 +21,8 @@ public class Silver extends Treasure {
     @Override
     public void play(Player p) {
         if (p.isHasMerchantEffect()>0) {
-            p.incrementMoney(1);
-            p.setHasMerchantEffect(-1);
+            p.incrementMoney(p.isHasMerchantEffect());
+            p.incrementHasMerchantEffect(-p.isHasMerchantEffect());
         }
         p.incrementMoney(2);
     }
