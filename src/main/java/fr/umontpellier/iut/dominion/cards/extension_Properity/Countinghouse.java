@@ -4,9 +4,7 @@ import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
-
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Countinghouse extends Action {
     public Countinghouse() {

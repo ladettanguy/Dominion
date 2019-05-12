@@ -221,14 +221,13 @@ class CardsTestExtension {
     void testGrandmarket() {
         p2.getHand().add(new Grandmarket());
         Card c1 = p2.getDraw().get(0);
-        p2.playCard("Grand Market");
-        p2.buyCard("Copper");
+        p2.incrementMoney(6);
+        p2.incrementBuys(1);
+        p2.addToInPlay(new Copper());
+        p2.buyCard("Grand Market");
 
-        assertNotNull(p2.getDiscard().getCard("Copper"));
-        assertEquals(1, p2.getCountOfPoints());
-        assertEquals(0, p2.getNumberOfBuys());
-        assertEquals(1, p2.getNumberOfActions());
-        assertTrue(p2.getHand().contains(c1));
+        assertNull(p2.getDiscard().getCard("Grand Market"));
+        assertEquals(6,p2.getMoney());
     }
 
     @Test

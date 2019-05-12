@@ -425,8 +425,6 @@ public class Player{
         if (c != null) discard.add(c);
         for (Card card: getCardsInInplay()) {
             if(card.getName().equals("Royal Seal")) draw.add(removeToInPlay(card));
-            if(card.getName().equals("Grand Market")) incrementVictoryPoint(1);
-            if(card.getName().equals("Talisman")&& !c.getTypes().contains(CardType.Victory) && c.getCost() <= 4) discardCard(c);
         }
         if(hand.contains(hand.getCard("Watchtower"))) {
             ArrayList<String> list = new ArrayList<>();
@@ -473,21 +471,26 @@ public class Player{
     public Card buyCard(String cardName) {
         if(numberOfBuys > 0) {
             Card c = game.getFromSupply(cardName);
-            int cost = c.getCost();
-            for (Card card: inPlay) {
-                if(card.getName().equals("Quarry") && c.getTypes(). contains(CardType.Action)) cost -=2;
-                if(cardName.equals("Peddler") && card.getTypes().contains(CardType.Action)) cost -=2;
-                if(card.getName().equals("Hoard") && c.getTypes().contains(CardType.Victory)) gain(new Gold());
+            if(c != null) {
+                int cost = c.getCost();
+                boolean notGrandMarket = true;
+                for (Card card : inPlay) {
+                    if (card.getName().equals("Copper") && c.getName().equals("Grand Market")) notGrandMarket = false;
+                    if (card.getName().equals("Quarry") && c.getTypes().contains(CardType.Action)) cost -= 2;
+                    if (cardName.equals("Peddler") && card.getTypes().contains(CardType.Action)) cost -= 2;
+                    if(card.getName().equals("Talisman")&& !c.getTypes().contains(CardType.Victory) && money >= cost && cost <= 4) discardCard(c);
+                    if (card.getName().equals("Hoard") && c.getTypes().contains(CardType.Victory) && money >= cost) gain(new Gold());
+                }
+                if (cost < 0) cost = 0;
+                if (money >= cost && notGrandMarket) {
+                    Card card = gainFromSupply(cardName);
+                    incrementMoney(-cost);
+                    numberOfBuys -= 1;
+                    if (cardName.equals("Mint")) clearInPlayAllTreasure();
+                    return card;
+                }
+                return null;
             }
-            if(cost < 0) cost = 0;
-            if(money >= cost) {
-                Card card = gainFromSupply(cardName);
-                incrementMoney(-cost);
-                numberOfBuys -= 1;
-                if (cardName.equals("Mint")) clearInPlayAllTreasure();
-                return card;
-            }
-            return null;
         }
         return null;
     }
