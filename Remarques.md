@@ -1,6 +1,14 @@
 Bien le bonjours et premierement je tiens a m'escuser d'avance des faute d'orthographe qu'il risque fortement de suivre 
 dans ce document Remarques.md 
 
+premièrement : j'aimerai signalez que j'ai en TRES grosse partie fais le projet seul (Ladet tanguy), pas aidez pas mon groupe que j'ai essayé
+de prévenir, demander de venir, seul Virgil Roquette-Campredon à dénier venir m'aider pour quelque card, Malgrès les moyen que j'ai essaye de 
+metre en place pour qu'ils viennent : Toujours connecter sur discord; plussieur message en leur demander de venir coder; j'ai même 
+proposer de faire le code et de leur envoyer pour qu'il puissent commit chez eux et gagné de la participation au projet. 
+Tout de même il est vrais que j'ai réaliser le projet assez rapidement durant la deuxieme partie des vacances car je penser qu'il fallais
+le finir et le rendre pour le mercredi de la rentrée. Mais après tous il ne voulais pas beaucoup m'aider par la suite a optimiser le code, 
+Réparer les dernier bug, et m'aider pour l'extension "Prosperity" que nous avons commencer a faire en cours.
+
 pour commencer a parler du projet :
 Je tien a préciser que je n'est pas installer l'interface graphique
 
