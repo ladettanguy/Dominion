@@ -22,11 +22,15 @@ public class Moneylender extends Action {
 
     @Override
     public void play(Player p) {
-        ListOfCards list = p.getCardsInHand();
-        for (Card c: list) {
-            if (c.getName().equals("Copper")){
-                p.removeToHand("Copper");
-                p.incrementMoney(3);
+        ArrayList<String> choix = new ArrayList<>();
+        choix.add("y");choix.add("n");
+        for (Card c: p.getCardsInHand()) {
+            if (c.getName().equals("Copper")) {
+                String s = p.chooseOption("voulez-vous trash un copper \"y\" ou \"n\" ",choix,true);
+                if(s.equals("y")){
+                    p.removeToHand("Copper");
+                    p.incrementMoney(3);
+                }
                 break;
             }
         }

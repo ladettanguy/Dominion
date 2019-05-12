@@ -535,7 +535,7 @@ class CardsTestExtension {
         //remet des carte en main
         p2.getInPlay().add(new Village());
         p2.getInPlay().add(new Village());
-        p2.getInPlay().add(new Quarry());
+        p2.getInPlay().add(new Village());
         p2.incrementBuys(1);
         p2.incrementMoney(2);
 
@@ -544,4 +544,5 @@ class CardsTestExtension {
         assertNotNull(p2.getDiscard().getCard("Peddler"));
         assertEquals(0,p2.getMoney());
     }
+
 }

@@ -266,7 +266,7 @@ public class Player{
     public void haveMoat(){
         for (Card c: hand) {
             if(c.getName().equals("Moat")) {
-                ArrayList<String> list = new ArrayList<String>();
+                ArrayList<String> list = new ArrayList<>();
                 list.add("y");list.add("n");
                 String s = chooseOption("Voullez vous jouer Moat ?",list, false);
                 if(s.equals("y")) protectByMoat = true;
@@ -329,6 +329,8 @@ public class Player{
         discard.add(c);
     }
 
+    public void discardAll(ListOfCards list){discard.addAll(list);}
+
     public ListOfCards getCardsInInplay(){
         return new ListOfCards(inPlay);
     }
@@ -375,10 +377,6 @@ public class Player{
         joiner.add(String.format("\"in_play\": %s", inPlay.toJSON()));
         joiner.add(String.format("\"hand\": %s", hand.toJSON()));
         return "{" + joiner.toString() + "}";
-    }
-
-    private void setInPlay(Card c){
-
     }
 
     /**
@@ -428,7 +426,7 @@ public class Player{
         for (Card card: getCardsInInplay()) {
             if(card.getName().equals("Royal Seal")) draw.add(removeToInPlay(card));
             if(card.getName().equals("Grand Market")) incrementVictoryPoint(1);
-            if(card.getName().equals("Talisman")&& !c.getTypes().contains(CardType.Victory) && c.getCost() <= 4) discard.add(c);
+            if(card.getName().equals("Talisman")&& !c.getTypes().contains(CardType.Victory) && c.getCost() <= 4) discardCard(c);
         }
         if(hand.contains(hand.getCard("Watchtower"))) {
             ArrayList<String> list = new ArrayList<>();
@@ -518,6 +516,8 @@ public class Player{
     public void addToDraw(Card c) {
         draw.add(0,c);
     }
+
+    public void addToInPlay(Card c){inPlay.add(0,c);}
 
     /**
      * Attend une entrée de la part du joueur (au clavier) et renvoie le choix

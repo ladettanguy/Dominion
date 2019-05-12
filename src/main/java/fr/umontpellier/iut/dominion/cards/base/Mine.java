@@ -27,7 +27,7 @@ public class Mine extends Action {
         for (Card c: list) {
             if (c.getTypes().contains(CardType.Treasure)) treasure.add(c);
         }
-        String s = p.chooseCard("Choissiez un trésor à évoluer",treasure,false);
+        String s = p.chooseCard("Choissiez un trésor à évoluer",treasure,true);
         Card trash = p.removeToHand(s);
         ListOfCards available = p.getGame().availableSupplyCards();
         ListOfCards dispo = new ListOfCards();

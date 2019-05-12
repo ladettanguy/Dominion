@@ -17,7 +17,7 @@ public abstract class ActionPlaySeveralTimes extends Action {
         for (Card c: list)
             if (c.getTypes().contains(CardType.Action))jouable.add(c);
         String s;
-        s = p.chooseCard("choisissez une carte à jouer deux fois parmi les suivantes",jouable, jouable.isEmpty());
+        s = p.chooseCard("choisissez une carte à jouer deux fois parmi les suivantes",jouable, true);
         Card c = list.getCard(s);
         p.playCard(s);
         for (int i = 0; i < nombreDePlay-1; i++) {
