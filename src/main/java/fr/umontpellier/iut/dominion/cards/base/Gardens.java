@@ -21,10 +21,10 @@ public class Gardens extends Victory {
 
     public int getVictoryValue(Player p){
         ListOfCards list = new ListOfCards();
-        list.addAll(p.getDraw());
-        list.addAll(p.getDiscard());
-        list.addAll(p.getInPlay());
-        list.addAll(p.getHand());
+        list.addAll(p.getCardsInDraw());
+        list.addAll(p.getCardsInDiscard());
+        list.addAll(p.getCardsInInplay());
+        list.addAll(p.getCardsInHand());
         return list.size()/10;
     }
 

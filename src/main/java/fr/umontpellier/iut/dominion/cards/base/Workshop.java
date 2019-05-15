@@ -22,12 +22,10 @@ public class Workshop extends Action {
     @Override
     public void play(Player p) {
         ListOfCards list = p.getGame().availableSupplyCards();
-        ListOfCards list1 = p.getGame().availableSupplyCards();
-        for (Card c: list1) {
+        for (Card c: p.getGame().availableSupplyCards()) {
             if (c.getCost() > 5) list.remove(c);
         }
         String s =p.chooseCard("Choisissez parmi ces cartes :", list , true);
         p.gainFromSupply(s);
-
     }
 }

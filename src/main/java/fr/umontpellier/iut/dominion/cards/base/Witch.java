@@ -26,9 +26,7 @@ public class Witch extends ActionAttack {
         p.drawToHand();
         List<Player> list = p.getGame().otherPlayers(p);
         for (Player pla : list) {
-            pla.haveMoat();
-            if(!pla.isProtected())pla.gainFromSupply("Curse");
-            pla.cancelProtect();
+            if(!pla.haveMoat())pla.gainFromSupply("Curse");
         }
     }
 

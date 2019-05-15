@@ -28,7 +28,7 @@ public class Bureaucrat extends ActionAttack {
         p.addToDraw(p.getGame().removeFromSupply("Silver"));
         for (Player pla : p.getOtherPlayers()) {
             pla.haveMoat();
-            if(!pla.isProtected()){
+            if(!pla.haveMoat()){
                 ListOfCards victory = new ListOfCards();
                 for (Card c: pla.getCardsInHand()) {
                     if(c.getTypes().contains(CardType.Victory)) victory.add(c);

@@ -27,11 +27,10 @@ public class Harbinger extends Action {
         p.drawToHand();
 
         ListOfCards discard = p.getCardsInDiscard();
-        String s = p.chooseCard("Choissisez une carte de votre défausse", discard, !discard.isEmpty());
+        String s = p.chooseCard("Choissisez une carte de votre défausse", discard, true);
         Card c = discard.getCard(s);
         p.addToDraw(c);
         p.removeToDiscard(c);
-
     }
  
 }

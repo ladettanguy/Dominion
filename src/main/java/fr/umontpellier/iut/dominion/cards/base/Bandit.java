@@ -25,8 +25,7 @@ public class Bandit extends ActionAttack {
         p.gainFromSupply("Gold");
         List<Player> list = p.getGame().otherPlayers(p);
         for (Player pla : list) {
-            p.haveMoat();
-            if(!p.isProtected()) {
+            if(!p.haveMoat()) {
                 Card c1 = pla.drawCard();
                 Card c2 = pla.drawCard();
                 ListOfCards aTrash = new ListOfCards();
@@ -45,7 +44,6 @@ public class Bandit extends ActionAttack {
                     pla.discardCard(pioche.get(0));
                 }
             }
-            p.cancelProtect();
         }
     }
 }

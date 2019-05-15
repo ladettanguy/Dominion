@@ -25,8 +25,7 @@ public class Militia extends ActionAttack {
         p.incrementMoney(2);
         List<Player> listPlayer = p.getGame().otherPlayers(p);
         for (Player pla : listPlayer) {
-            pla.haveMoat();
-            if(!pla.isProtected()){
+            if(!pla.haveMoat());{
                 ListOfCards list1 = pla.getCardsInHand();
                 while (list1.size() > 3){
                     String s = pla.chooseCard("Choissiez une carte à défaussé. restant: " + (list1.size()-3),list1,false);

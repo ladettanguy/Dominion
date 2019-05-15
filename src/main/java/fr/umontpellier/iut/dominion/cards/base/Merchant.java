@@ -19,6 +19,7 @@ public class Merchant extends Action {
     public Merchant() {
         super("Merchant", 3);
     }
+
     @Override
     public void play(Player p) {
         p.drawToHand();
