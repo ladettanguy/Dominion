@@ -23,8 +23,7 @@ public class Cellar extends Action {
     @Override
     public void play(Player p) {
         p.incrementActions(1);
-        p.getGame().println("Entrez les cartes à défaussée (une par une) et Appuyer sur ENTER (vide) pour Pass");
-        String s = p.getGame().readLine();
+        String s = p.chooseCard("Entrez les cartes à défaussée (une par une) et Appuyer sur ENTER (vide) pour Pass",p.getCardsInHand(),true);
         int count = 0;
         while (!s.equals("")){
             Card c = p.removeToHand(s);
@@ -32,7 +31,7 @@ public class Cellar extends Action {
                 p.discardCard(c);
                 count++;
             }
-            s = p.getGame().readLine();
+            s = p.chooseCard("Entrez les cartes à défaussée (une par une) et Appuyer sur ENTER (vide) pour Pass",p.getCardsInHand(),true);
         }
         for (int i = 0; i < count; i++) {
             p.drawToHand();

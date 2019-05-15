@@ -22,22 +22,21 @@ public class Artisan extends Action {
 
     @Override
     public void play(Player p) {
-        ListOfCards supply = p.getGame().availableSupplyCards();
         ListOfCards supplyInferior5 = new ListOfCards();
-        for ( Card c : supply) {
+        for ( Card c : p.getGame().availableSupplyCards()) {
             if(c.getCost() <= 5){
                 supplyInferior5.add(c);
             }
         }
 
-        String choose = p.chooseCard("Choissisez une carte de votre défausse", supplyInferior5, !supplyInferior5.isEmpty());
-        Card ca = p.getGame().removeFromSupply(choose);
-        p.addToHand(ca);
-
+        String choose = p.chooseCard("Choissisez une carte qui coute 5max", supplyInferior5, false);
+        if(!choose.equals("")) {
+            Card ca = p.getGame().removeFromSupply(choose);
+            p.addToHand(ca);
+        }
         ListOfCards hand = p.getCardsInHand();
-        String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, !hand.isEmpty());
-        Card c = hand.getCard(chooseHand);
-        p.addToDraw(c);
+        String chooseHand = p.chooseCard("Choissisez une carte de votre main à mettre sur votre deck", hand, false);
+        p.addToDraw(hand.getCard(chooseHand));
         p.removeToHand(chooseHand);
     }
 }

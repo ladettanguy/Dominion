@@ -20,13 +20,12 @@ public class Chapel extends Action {
 
     @Override
     public void play(Player p) {
-        p.getGame().println("Entrez les cartes à Écartez (une par une et max:4) et Appuyer sur ENTER (vide) pour Pass");
-        String s = p.getGame().readLine();
+        String s = p.chooseCard("Entrez les cartes à Écartez (une par une et max:4) et Appuyer sur ENTER (vide) pour Pass",p.getCardsInHand(),true);
         int count = 0;
         while (count < 4 && !s.equals("")){
             Card c = p.removeToHand(s);
             if(c != null) count++;
-            s = p.getGame().readLine();
+            s = p.chooseCard("Entrez les cartes à Écartez (une par une et max:4) et Appuyer sur ENTER (vide) pour Pass",p.getCardsInHand(),true);
         }
     }
 
