@@ -11,12 +11,10 @@ public abstract class TrashAndChangeACard extends Action {
     }
 
     public void play(Player p, int costMaxEnPlus) {
-        ListOfCards list = p.getCardsInHand();
-        String s = p.chooseCard("Choissiez une carte à évoluer",list,false);
+        String s = p.chooseCard("Choissiez une carte à évoluer",p.getCardsInHand(),false);
         Card trash = p.removeToHand(s);
-        ListOfCards available = p.getGame().availableSupplyCards();
         ListOfCards dispo = new ListOfCards();
-        for (Card c : available) {
+        for (Card c : p.getGame().availableSupplyCards()) {
             if ( c.getCost() <= (trash.getCost()+ costMaxEnPlus)) dispo.add(c);
         }
         String choix = p.chooseCard("Choissiez une carte coutant au maximum " + (trash.getCost()+ costMaxEnPlus),dispo,false);
